@@ -10,4 +10,15 @@ const userController = require("../controllers/auth.controller");
  */
 
 authRouter.post("/register", userController.registerUserController);
-module.exports = authRouter;
+
+
+/**
+ * @Post  /api/auth/login
+ * @description Login User 
+ * @access Public 
+ */
+
+authRouter.post("/api/login", authController.loginUserController);
+
+
+module.exports = authRouter;    

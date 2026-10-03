@@ -85,4 +85,5 @@ async function loginUserController (req, res){
 
 module.exports = {
     registerUserController,
+    loginUserController,
 }
