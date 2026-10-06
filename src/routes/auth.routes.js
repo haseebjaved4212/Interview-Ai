@@ -26,6 +26,6 @@ authRouter.post("/login", userController.loginUserController);
  * @access Public 
  */
 
-authRouter.get("/logout", userController.logoutUserController);
+authRouter.get("/logout", authController.logoutUserController);
 
 module.exports = authRouter;    

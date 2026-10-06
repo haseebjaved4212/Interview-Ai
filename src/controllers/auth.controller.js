@@ -1,7 +1,7 @@
 const UserModel = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-
+const tokenBlacklistModel = require("../models/blacklist.model");
 /**
  * @desc Register A new User 
  * @route Post /api/auth/register
@@ -71,7 +71,20 @@ async function loginUserController (req, res){
     } });
 }
 
+/**
+ * @desc Logout User 
+ * @route GET /api/auth/logout
+ * @access Public
+ */
 
+async function logoutUserController (req, res){
+    const token = req.cookie.token 
+    if(token){
+        await tokenBlacklistModel.create({token});
+    }
+    res.clearCookie("token");
+    res.status(200).json({ message: "Logout successful" });
+}
 
 
 
@@ -86,4 +99,5 @@ async function loginUserController (req, res){
 module.exports = {
     registerUserController,
     loginUserController,
+    logoutUserController,
 }
