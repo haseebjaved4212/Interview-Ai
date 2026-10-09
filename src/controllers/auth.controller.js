@@ -78,12 +78,25 @@ async function loginUserController (req, res){
  */
 
 async function logoutUserController (req, res){
-    const token = req.cookies.token 
-    if(token){
-        await tokenBlacklistModel.create({token});
+    try {
+        // Extract token from cookie or Authorization header (Bearer token)
+        const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
+
+        if (!token) {
+            return res.status(400).json({ message: "No token provided. Cannot logout without a token." });
+        }
+
+        // Check if token is already blacklisted
+        const isBlacklisted = await tokenBlacklistModel.findOne({ token });
+        if (!isBlacklisted) {
+            await tokenBlacklistModel.create({ token });
+        }
+
+        res.clearCookie("token");
+        return res.status(200).json({ message: "Logout successful" });
+    } catch (error) {
+        return res.status(500).json({ message: "Error logging out", error: error.message });
     }
-    res.clearCookie("token");
-    res.status(200).json({ message: "Logout successful" });
 }
 
 
