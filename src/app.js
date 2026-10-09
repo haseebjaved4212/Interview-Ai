@@ -1,10 +1,13 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
+
 
 const app = express();
 
 // Middleware To Parse JSON 
 app.use(express.json());
-
+// Middleware To Parse Cookies
+app.use(cookieParser());
 
 // Require All Routes Here 
 
