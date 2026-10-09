@@ -79,8 +79,22 @@ async function loginUserController (req, res){
 
 async function logoutUserController (req, res){
     try {
-        // Extract token from cookie or Authorization header (Bearer token)
-        const token = req.cookies?.token || req.headers.authorization?.split(" ")[1];
+        // Extract token from cookie, Authorization header, custom header, or body
+        let token = req.cookies?.token;
+
+        if (!token && req.headers.authorization) {
+            token = req.headers.authorization.startsWith("Bearer ")
+                ? req.headers.authorization.split(" ")[1]
+                : req.headers.authorization;
+        }
+
+        if (!token && req.headers.token) {
+            token = req.headers.token;
+        }
+
+        if (!token && req.body?.token) {
+            token = req.body.token;
+        }
 
         if (!token) {
             return res.status(400).json({ message: "No token provided. Cannot logout without a token." });
