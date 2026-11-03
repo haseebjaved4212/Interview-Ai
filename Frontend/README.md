@@ -1,16 +1,47 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Folder Structure
 
-Currently, two official plugins are available:
+```
+Frontend/
+├── public/
+│   ├── favicon.svg
+│   └── icons.svg
+├── src/
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── components/
+│   │   │   ├── hooks/
+│   │   │   │   └── useAuth.js
+│   │   │   ├── pages/
+│   │   │   │   ├── Login.jsx
+│   │   │   │   └── Register.jsx
+│   │   │   ├── services/
+│   │   │   │   └── auth.api.js
+│   │   │   ├── auth.context.jsx
+│   │   │   └── auth.form.scss
+│   │   ├── interview/
+│   │   │   ├── hooks/
+│   │   │   │   └── useInterview.js
+│   │   │   ├── pages/
+│   │   │   │   ├── Home.jsx
+│   │   │   │   └── Interview.jsx
+│   │   │   ├── services/
+│   │   │   │   └── interview.api.js
+│   │   │   ├── style/
+│   │   │   │   ├── home.scss
+│   │   │   │   └── interview.scss
+│   │   │   └── Interview.context.jsx
+│   │   └── styles/
+│   │       └── button.scss
+│   ├── App.jsx
+│   ├── app.route.jsx
+│   ├── main.jsx
+│   └── style.scss
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
