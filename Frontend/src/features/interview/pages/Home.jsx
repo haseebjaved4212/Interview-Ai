@@ -39,11 +39,15 @@ const Home = () => {
             return;
         }
 
-        const data = await generateReport({ jobDescription, selfDescription, resumeFile });
-        if (data?._id) {
-            navigate(`/interview/${data._id}`);
-        } else {
-            setFormError("Failed to generate interview strategy. Please try again.");
+        try {
+            const data = await generateReport({ jobDescription, selfDescription, resumeFile });
+            if (data?._id) {
+                navigate(`/interview/${data._id}`);
+            } else {
+                setFormError("Failed to generate interview strategy. Please try again.");
+            }
+        } catch (err) {
+            setFormError(err.message || "Failed to generate interview strategy. Please try again.");
         }
     };
 

@@ -19,9 +19,11 @@ async function generateInterViewReportController(req, res) {
 
         if (req.file && req.file.buffer) {
             try {
-                const parsed = await (new pdfParse.PDFParse(Uint8Array.from(req.file.buffer))).getText();
-                resumeText = parsed.text || "";
+                const parser = new pdfParse.PDFParse({ data: req.file.buffer });
+                const parsed = await parser.getText();
+                resumeText = parsed?.text || "";
             } catch (parseError) {
+                console.error("PDF Parsing error:", parseError);
                 return res.status(400).json({
                     message: "Failed to extract text from resume PDF. Please ensure you upload a valid PDF document.",
                     error: parseError.message
@@ -48,6 +50,12 @@ async function generateInterViewReportController(req, res) {
             resume: resumeText,
             selfDescription: selfDescription || "",
             jobDescription,
+            title: interViewReportByAi.title || "Interview Strategy Plan",
+            matchScore: typeof interViewReportByAi.matchScore === "number" ? interViewReportByAi.matchScore : 75,
+            technicalQuestions: interViewReportByAi.technicalQuestions || [],
+            behavioralQuestions: interViewReportByAi.behavioralQuestions || [],
+            skillGaps: interViewReportByAi.skillGaps || [],
+            preparationPlan: interViewReportByAi.preparationPlan || [],
             ...interViewReportByAi
         });
 
@@ -56,6 +64,7 @@ async function generateInterViewReportController(req, res) {
             interviewReport
         });
     } catch (error) {
+        console.error("Error in generateInterViewReportController:", error);
         return res.status(500).json({
             message: "Failed to generate interview report. Please try again.",
             error: error.message
