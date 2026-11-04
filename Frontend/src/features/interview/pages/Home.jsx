@@ -1,39 +1,112 @@
-import React, { useState, useRef } from 'react'
-import "../style/home.scss"
- import { useInterview } from '../hooks/useInterview.js'
- import { useNavigate } from 'react-router'
+import { useState, useRef } from 'react';
+import "../style/home.scss";
+import { useInterview } from '../hooks/useInterview.js';
+import { useAuth } from '../../auth/hooks/useAuth.js';
+import { useNavigate } from 'react-router';
 
 const Home = () => {
+    const { loading, generateReport, reports } = useInterview();
+    const { user, handleLogout } = useAuth();
+    const [jobDescription, setJobDescription] = useState("");
+    const [selfDescription, setSelfDescription] = useState("");
+    const [selectedFileName, setSelectedFileName] = useState("");
+    const [formError, setFormError] = useState("");
+    const resumeInputRef = useRef();
 
-    const { loading, generateReport,reports } = useInterview()
-    const [ jobDescription, setJobDescription ] = useState("")
-    const [ selfDescription, setSelfDescription ] = useState("")
-    const resumeInputRef = useRef()
+    const navigate = useNavigate();
 
-    const navigate = useNavigate()
+    const handleFileChange = (e) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedFileName(file.name);
+            setFormError("");
+        } else {
+            setSelectedFileName("");
+        }
+    };
 
     const handleGenerateReport = async () => {
-        const resumeFile = resumeInputRef.current.files[ 0 ]
-        const data = await generateReport({ jobDescription, selfDescription, resumeFile })
-        navigate(`/interview/${data._id}`)
-    }
+        setFormError("");
+        const resumeFile = resumeInputRef.current?.files?.[0];
+
+        if (!jobDescription.trim()) {
+            setFormError("Target job description is required.");
+            return;
+        }
+
+        if (!resumeFile && !selfDescription.trim()) {
+            setFormError("Please upload a resume or provide a quick self-description.");
+            return;
+        }
+
+        const data = await generateReport({ jobDescription, selfDescription, resumeFile });
+        if (data?._id) {
+            navigate(`/interview/${data._id}`);
+        } else {
+            setFormError("Failed to generate interview strategy. Please try again.");
+        }
+    };
 
     if (loading) {
         return (
             <main className='loading-screen'>
-                <h1>Loading your interview plan...</h1>
+                <h1>Generating your customized interview strategy...</h1>
             </main>
-        )
+        );
     }
 
     return (
         <div className='home-page'>
+            {/* Top Bar with User Info & Logout */}
+            <div style={{
+                width: '100%',
+                maxWidth: '960px',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                paddingBottom: '0.5rem'
+            }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '50%',
+                        backgroundColor: 'var(--color-score-high, #10B981)'
+                    }} />
+                    <span style={{ fontSize: '0.85rem', color: 'var(--text-body, #9CA3AF)' }}>
+                        Logged in as <strong style={{ color: 'var(--text-heading, #F9FAFB)' }}>{user?.username || 'Candidate'}</strong>
+                    </span>
+                </div>
+                <button
+                    onClick={handleLogout}
+                    className='button secondary-button'
+                    style={{ fontSize: '0.8rem', padding: '0.4rem 0.9rem' }}
+                >
+                    Logout
+                </button>
+            </div>
 
             {/* Page Header */}
             <header className='page-header'>
                 <h1>Create Your Custom <span className='highlight'>Interview Plan</span></h1>
                 <p>Let our AI analyze the job requirements and your unique profile to build a winning strategy.</p>
             </header>
+
+            {formError && (
+                <div style={{
+                    width: '100%',
+                    maxWidth: '960px',
+                    color: 'var(--color-error, #EF4444)',
+                    backgroundColor: 'rgba(239, 68, 68, 0.12)',
+                    border: '1px solid rgba(239, 68, 68, 0.3)',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '0.5rem',
+                    fontSize: '0.875rem',
+                    textAlign: 'center'
+                }}>
+                    {formError}
+                </div>
+            )}
 
             {/* Main Card */}
             <div className='interview-card'>
@@ -49,12 +122,16 @@ const Home = () => {
                             <span className='badge badge--required'>Required</span>
                         </div>
                         <textarea
-                            onChange={(e) => { setJobDescription(e.target.value) }}
+                            value={jobDescription}
+                            onChange={(e) => {
+                                setJobDescription(e.target.value);
+                                if (formError) setFormError("");
+                            }}
                             className='panel__textarea'
-                            placeholder={`Paste the full job description here...\ne.g. 'Senior Frontend Engineer at Google requires proficiency in React, TypeScript, and large-scale system design...'`}
+                            placeholder={`Paste the full job description here...\ne.g. 'Senior Frontend Engineer requires proficiency in React, TypeScript, and large-scale system design...'`}
                             maxLength={5000}
                         />
-                        <div className='char-counter'>0 / 5000 chars</div>
+                        <div className='char-counter'>{jobDescription.length} / 5000 chars</div>
                     </div>
 
                     {/* Vertical Divider */}
@@ -79,9 +156,21 @@ const Home = () => {
                                 <span className='dropzone__icon'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 16 12 12 8 16" /><line x1="12" y1="12" x2="12" y2="21" /><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3" /></svg>
                                 </span>
-                                <p className='dropzone__title'>Click to upload or drag &amp; drop</p>
-                                <p className='dropzone__subtitle'>PDF or DOCX (Max 5MB)</p>
-                                <input ref={resumeInputRef} hidden type='file' id='resume' name='resume' accept='.pdf,.docx' />
+                                <p className='dropzone__title'>
+                                    {selectedFileName ? selectedFileName : "Click to upload or drag & drop"}
+                                </p>
+                                <p className='dropzone__subtitle'>
+                                    {selectedFileName ? "File ready for AI analysis" : "PDF or DOCX (Max 3MB)"}
+                                </p>
+                                <input
+                                    ref={resumeInputRef}
+                                    onChange={handleFileChange}
+                                    hidden
+                                    type='file'
+                                    id='resume'
+                                    name='resume'
+                                    accept='.pdf,.docx'
+                                />
                             </label>
                         </div>
 
@@ -92,7 +181,11 @@ const Home = () => {
                         <div className='self-description'>
                             <label className='section-label' htmlFor='selfDescription'>Quick Self-Description</label>
                             <textarea
-                                onChange={(e) => { setSelfDescription(e.target.value) }}
+                                value={selfDescription}
+                                onChange={(e) => {
+                                    setSelfDescription(e.target.value);
+                                    if (formError) setFormError("");
+                                }}
                                 id='selfDescription'
                                 name='selfDescription'
                                 className='panel__textarea panel__textarea--short'
@@ -127,11 +220,11 @@ const Home = () => {
                 <section className='recent-reports'>
                     <h2>My Recent Interview Plans</h2>
                     <ul className='reports-list'>
-                        {reports.map(report => (
-                            <li key={report._id} className='report-item' onClick={() => navigate(`/interview/${report._id}`)}>
-                                <h3>{report.title || 'Untitled Position'}</h3>
-                                <p className='report-meta'>Generated on {new Date(report.createdAt).toLocaleDateString()}</p>
-                                <p className={`match-score ${report.matchScore >= 80 ? 'score--high' : report.matchScore >= 60 ? 'score--mid' : 'score--low'}`}>Match Score: {report.matchScore}%</p>
+                        {reports.map(reportItem => (
+                            <li key={reportItem._id} className='report-item' onClick={() => navigate(`/interview/${reportItem._id}`)}>
+                                <h3>{reportItem.title || 'Untitled Position'}</h3>
+                                <p className='report-meta'>Generated on {new Date(reportItem.createdAt).toLocaleDateString()}</p>
+                                <p className={`match-score ${reportItem.matchScore >= 80 ? 'score--high' : reportItem.matchScore >= 60 ? 'score--mid' : 'score--low'}`}>Match Score: {reportItem.matchScore}%</p>
                             </li>
                         ))}
                     </ul>
@@ -145,7 +238,7 @@ const Home = () => {
                 <a href='#'>Help Center</a>
             </footer>
         </div>
-    )
-}
+    );
+};
 
-export default Home
+export default Home;
