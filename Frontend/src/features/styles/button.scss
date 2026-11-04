@@ -34,28 +34,35 @@
     }
 
     &.primary-button {
-        background-color: $color-primary;
+        background-color: $brand-primary;
         color: $text-inverse;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 
         &:hover {
-            background-color: $color-primary-hover;
-            box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+            background-color: $brand-primary-hover;
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.4);
+        }
+
+        &:active {
+            background-color: $brand-primary-active;
         }
 
         &:focus-visible {
-            box-shadow: 0 0 0 2px rgba($color-primary, 0.4);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.4);
         }
     }
 
     &.secondary-button {
-        background-color: $color-elevated-bg;
+        background-color: $dark-elevated;
         border: $border-base;
-        color: $text-heading;
+        color: $dark-text-primary;
 
         &:hover {
-            background-color: $color-elevated-hover;
-            border-color: $color-border-hover;
+            background-color: $dark-elevated-hover;
+            border-color: $dark-border-hover;
+            color: $text-inverse;
         }
     }
 }

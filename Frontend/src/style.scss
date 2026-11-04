@@ -8,8 +8,8 @@
 }
 
 html, body {
-    background-color: $color-canvas-bg;
-    color: $text-body;
+    background-color: $dark-bg;
+    color: $dark-text-secondary;
     font-family: $font-sans;
     font-size: 16px;
     line-height: 1.5;
@@ -26,7 +26,7 @@ html, body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: $text-heading;
+    color: $dark-text-primary;
     font-family: $font-sans;
     font-weight: 600;
     letter-spacing: -0.015em;
@@ -37,16 +37,16 @@ h1 {
 }
 
 p {
-    color: $text-body;
+    color: $dark-text-secondary;
 }
 
 a {
-    color: $color-primary;
+    color: #3b82f6;
     text-decoration: none;
     transition: color 0.15s ease-in-out;
 
     &:hover {
-        color: $color-primary-hover;
+        color: #60a5fa;
     }
 }
 
@@ -63,7 +63,7 @@ code, pre, kbd, samp {
     justify-content: center;
     align-items: center;
     gap: 1.25rem;
-    background-color: $color-canvas-bg;
+    background-color: $dark-bg;
 
     &::before {
         content: '';
@@ -75,7 +75,7 @@ code, pre, kbd, samp {
     h1 {
         font-size: 1.25rem;
         font-weight: 600;
-        color: $text-heading;
+        color: $dark-text-primary;
         letter-spacing: -0.01em;
         animation: ai-pulse 2s ease-in-out infinite;
     }
@@ -84,15 +84,15 @@ code, pre, kbd, samp {
 // ── Clean PDF Print Styles ────────────────────────────────────────────────────
 @media print {
     html, body {
-        background-color: $pdf-canvas-bg !important;
-        color: $pdf-text-primary !important;
+        background-color: $light-bg !important;
+        color: $light-text-primary !important;
     }
 
     .interview-card,
     .q-card,
     .roadmap-day {
-        background-color: $pdf-card-bg !important;
-        border-color: $pdf-border !important;
-        color: $pdf-text-primary !important;
+        background-color: $light-card !important;
+        border-color: $light-border !important;
+        color: $light-text-primary !important;
     }
 }

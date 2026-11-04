@@ -4,8 +4,8 @@
 .home-page {
     width: 100%;
     min-height: 100vh;
-    background-color: $color-canvas-bg;
-    color: $text-body;
+    background-color: $dark-bg;
+    color: $dark-text-secondary;
     font-family: $font-sans;
 
     display: flex;
@@ -24,12 +24,12 @@
         font-size: 2.25rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        color: $text-heading;
+        color: $dark-text-primary;
         letter-spacing: -0.025em;
     }
 
     p {
-        color: $text-body;
+        color: $dark-text-secondary;
         font-size: 0.95rem;
         max-width: 520px;
         margin: 0 auto;
@@ -37,10 +37,8 @@
     }
 
     .highlight {
-        color: $color-primary;
-        background: $color-gradient-brand;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: $accent-teal;
+        font-weight: 700;
     }
 }
 
@@ -48,11 +46,11 @@
 .interview-card {
     width: 100%;
     max-width: 960px;
-    background-color: $color-card-bg;
+    background-color: $dark-card;
     border: $border-base;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     overflow: hidden;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
 
     &__body {
         display: flex;
@@ -68,12 +66,12 @@
         align-items: center;
         justify-content: space-between;
         padding: 1rem 1.5rem;
-        background-color: $color-card-bg;
+        background-color: $dark-card;
         border-top: $border-base;
 
         .footer-info {
             font-size: 0.8rem;
-            color: $text-muted;
+            color: $dark-text-muted;
             font-family: $font-mono;
         }
     }
@@ -82,7 +80,7 @@
 // ── Panels ────────────────────────────────────────────────────────────────────
 .panel-divider {
     width: 1px;
-    background-color: $color-border;
+    background-color: $dark-border;
     flex-shrink: 0;
 
     @media (max-width: 768px) {
@@ -107,7 +105,7 @@
         h2 {
             font-size: 1rem;
             font-weight: 600;
-            color: $text-heading;
+            color: $dark-text-primary;
             flex: 1;
         }
     }
@@ -115,17 +113,17 @@
     &__icon {
         display: flex;
         align-items: center;
-        color: $color-primary;
+        color: $accent-teal;
     }
 
     &__textarea {
         flex: 1;
         width: 100%;
-        background-color: $color-elevated-bg;
+        background-color: $dark-elevated;
         border: $border-base;
         border-radius: 0.5rem;
         padding: 0.85rem 1rem;
-        color: $text-heading;
+        color: $dark-text-primary;
         font-family: $font-sans;
         font-size: 0.875rem;
         resize: none;
@@ -134,7 +132,7 @@
         line-height: 1.55;
 
         &::placeholder {
-            color: $text-muted;
+            color: $dark-text-muted;
         }
 
         &:focus {
@@ -155,7 +153,7 @@
             bottom: 2.5rem;
             right: 2.25rem;
             font-size: 0.75rem;
-            color: $text-muted;
+            color: $dark-text-muted;
             font-family: $font-mono;
             pointer-events: none;
         }
@@ -176,15 +174,15 @@
     letter-spacing: 0.04em;
 
     &--required {
-        background-color: rgba($color-error, 0.12);
-        color: $color-error;
-        border: 1px solid rgba($color-error, 0.3);
+        background-color: rgba($accent-error, 0.12);
+        color: $accent-error;
+        border: 1px solid rgba($accent-error, 0.3);
     }
 
     &--best {
-        background-color: rgba($color-secondary, 0.15);
-        color: $color-secondary;
-        border: 1px solid rgba($color-secondary, 0.3);
+        background-color: rgba($accent-teal, 0.12);
+        color: $accent-teal;
+        border: 1px solid rgba($accent-teal, 0.3);
     }
 }
 
@@ -195,7 +193,7 @@
     gap: 0.5rem;
     font-size: 0.875rem;
     font-weight: 500;
-    color: $text-heading;
+    color: $dark-text-primary;
     margin-bottom: 0.25rem;
 }
 
@@ -213,24 +211,24 @@
     justify-content: center;
     gap: 0.4rem;
     padding: 1.5rem 1rem;
-    background-color: $color-elevated-bg;
-    border: 2px dashed $color-border;
-    border-radius: 0.625rem;
+    background-color: $dark-elevated;
+    border: 2px dashed $dark-border;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: border-color 0.15s ease-in-out, background-color 0.15s ease-in-out;
 
     &:hover {
-        border-color: $color-primary;
-        background-color: rgba($color-primary, 0.05);
+        border-color: $accent-teal;
+        background-color: rgba($accent-teal, 0.04);
 
         .dropzone__icon {
-            color: $color-primary;
+            color: $accent-teal;
             transform: translateY(-2px);
         }
     }
 
     &__icon {
-        color: $color-primary;
+        color: $accent-teal;
         margin-bottom: 0.25rem;
         transition: transform 0.15s ease-in-out, color 0.15s ease-in-out;
     }
@@ -238,13 +236,13 @@
     &__title {
         font-size: 0.875rem;
         font-weight: 600;
-        color: $text-heading;
+        color: $dark-text-primary;
         margin: 0;
     }
 
     &__subtitle {
         font-size: 0.75rem;
-        color: $text-muted;
+        color: $dark-text-muted;
         margin: 0;
         font-family: $font-mono;
     }
@@ -255,7 +253,7 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: $text-muted;
+    color: $dark-text-muted;
     font-size: 0.75rem;
     font-family: $font-mono;
 
@@ -264,7 +262,7 @@
         content: '';
         flex: 1;
         height: 1px;
-        background-color: $color-border;
+        background-color: $dark-border;
     }
 
     span {
@@ -285,24 +283,24 @@
     align-items: flex-start;
     gap: 0.65rem;
     padding: 0.75rem 1rem;
-    background-color: rgba($color-card-bg, 0.8);
-    border: 1px solid $color-border;
+    background-color: rgba($dark-elevated, 0.6);
+    border: $border-base;
     border-radius: 0.5rem;
 
     &__icon {
         flex-shrink: 0;
-        color: $color-info-stream;
+        color: $accent-teal;
         margin-top: 1px;
     }
 
     p {
         margin: 0;
         font-size: 0.8rem;
-        color: $text-body;
+        color: $dark-text-secondary;
         line-height: 1.5;
 
         strong {
-            color: $text-heading;
+            color: $dark-text-primary;
         }
     }
 }
@@ -313,20 +311,21 @@
     align-items: center;
     gap: 0.6rem;
     padding: 0.75rem 1.5rem;
-    background: $color-gradient-brand;
+    background-color: $brand-primary;
     color: $text-inverse;
     font-size: 0.875rem;
     font-weight: 600;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.5rem;
     cursor: pointer;
     font-family: $font-sans;
-    box-shadow: 0 4px 14px rgba($color-primary, 0.35);
-    transition: background 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, transform 0.1s ease-in-out;
 
     &:hover {
-        background: $color-gradient-hover;
-        box-shadow: 0 6px 20px rgba($color-primary, 0.45);
+        background-color: $brand-primary-hover;
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 2px 10px rgba(30, 58, 138, 0.4);
     }
 
     &:focus-visible {
@@ -335,6 +334,7 @@
 
     &:active {
         transform: scale(0.98);
+        background-color: $brand-primary-active;
     }
 }
 
@@ -349,7 +349,7 @@
     h2 {
         font-size: 1.15rem;
         font-weight: 600;
-        color: $text-heading;
+        color: $dark-text-primary;
     }
 
     .reports-list {
@@ -361,7 +361,7 @@
         margin: 0;
 
         .report-item {
-            background-color: $color-card-bg;
+            background-color: $dark-card;
             border: $border-base;
             border-radius: 0.625rem;
             padding: 1.15rem;
@@ -372,21 +372,21 @@
             transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.15s ease-in-out;
 
             &:hover {
-                background-color: $color-elevated-bg;
-                border-color: $color-border-hover;
+                background-color: $dark-elevated;
+                border-color: $dark-border-hover;
                 transform: translateY(-2px);
             }
 
             h3 {
                 font-size: 0.95rem;
                 font-weight: 600;
-                color: $text-heading;
+                color: $dark-text-primary;
                 margin: 0;
             }
 
             .report-meta {
                 font-size: 0.75rem;
-                color: $text-muted;
+                color: $dark-text-muted;
                 font-family: $font-mono;
                 margin: 0;
             }
@@ -397,15 +397,15 @@
                 margin-top: 0.25rem;
 
                 &.score--high {
-                    color: $color-score-high;
+                    color: $brand-accent;
                 }
 
                 &.score--mid {
-                    color: $color-warning;
+                    color: $accent-amber;
                 }
 
                 &.score--low {
-                    color: $color-error;
+                    color: $accent-error;
                 }
             }
         }
@@ -420,12 +420,12 @@
 
     a {
         font-size: 0.8rem;
-        color: $text-muted;
+        color: $dark-text-muted;
         text-decoration: none;
         transition: color 0.15s ease-in-out;
 
         &:hover {
-            color: $text-heading;
+            color: $dark-text-primary;
         }
     }
 }

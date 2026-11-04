@@ -8,8 +8,8 @@
 .interview-page {
     width: 100%;
     min-height: 100vh;
-    background-color: $color-canvas-bg;
-    color: $text-body;
+    background-color: $dark-bg;
+    color: $dark-text-secondary;
     font-family: $font-sans;
     display: flex;
     align-items: stretch;
@@ -23,11 +23,11 @@
     width: 100%;
     max-width: 1320px;
     margin: 0 auto;
-    background-color: $color-card-bg;
+    background-color: $dark-card;
     border: $border-base;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     justify-content: space-between;
-    box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
     overflow: hidden;
 
     @media (max-width: 1024px) {
@@ -37,7 +37,7 @@
 
 .interview-divider {
     width: 1px;
-    background-color: $color-border;
+    background-color: $dark-border;
     flex-shrink: 0;
 
     @media (max-width: 1024px) {
@@ -55,7 +55,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 1.5rem;
-    background-color: $color-card-bg;
+    background-color: $dark-card;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -72,7 +72,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: $text-muted;
+        color: $dark-text-muted;
         padding: 0 0.75rem;
         margin-bottom: 0.5rem;
         font-family: $font-mono;
@@ -87,7 +87,7 @@
         background: none;
         border: 1px solid transparent;
         border-radius: 0.5rem;
-        color: $text-body;
+        color: $dark-text-secondary;
         font-family: $font-sans;
         font-size: 0.875rem;
         font-weight: 500;
@@ -96,18 +96,18 @@
         transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 
         &:hover {
-            background-color: $color-elevated-bg;
-            color: $text-heading;
+            background-color: $dark-elevated;
+            color: $dark-text-primary;
         }
 
         &--active {
-            background-color: rgba($color-primary, 0.12);
-            border-color: rgba($color-primary, 0.3);
-            color: $color-primary;
+            background-color: rgba(30, 58, 138, 0.25);
+            border-color: rgba(37, 99, 235, 0.35);
+            color: #60a5fa;
             font-weight: 600;
 
             .interview-nav__icon svg {
-                stroke: $color-primary;
+                stroke: #60a5fa;
             }
         }
     }
@@ -126,7 +126,6 @@
     .button.primary-button {
         width: 100%;
         padding-block: 0.75rem;
-        box-shadow: 0 4px 14px rgba($color-primary, 0.3);
 
         svg {
             flex-shrink: 0;
@@ -134,7 +133,7 @@
     }
 }
 
-// ── Center Content ────────────────────────────────────────────────────────────
+// ── Center Content ────────────────────────────────────────────────────
 .interview-content {
     flex: 1;
     padding: 2rem 2.25rem;
@@ -143,7 +142,7 @@
     max-height: calc(100vh - 3rem);
     padding-bottom: 5rem;
     align-items: flex-start;
-    background-color: $color-card-bg;
+    background-color: $dark-card;
 
     section {
         min-height: 100%;
@@ -161,7 +160,7 @@
     h2 {
         font-size: 1.25rem;
         font-weight: 700;
-        color: $text-heading;
+        color: $dark-text-primary;
         margin: 0;
         letter-spacing: -0.02em;
     }
@@ -169,15 +168,15 @@
     &__count {
         font-size: 0.75rem;
         font-family: $font-mono;
-        color: $text-muted;
-        background-color: $color-elevated-bg;
+        color: $dark-text-muted;
+        background-color: $dark-elevated;
         padding: 0.2rem 0.65rem;
         border-radius: 2rem;
         border: $border-base;
     }
 }
 
-// ── Question Cards ────────────────────────────────────────────────────────────
+// ── Question Cards ────────────────────────────────────────────────────
 .q-list {
     display: flex;
     flex-direction: column;
@@ -185,15 +184,15 @@
 }
 
 .q-card {
-    background-color: $color-elevated-bg;
+    background-color: $dark-elevated;
     border: $border-base;
-    border-radius: 0.625rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     &:hover {
-        border-color: $color-border-hover;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        border-color: $dark-border-hover;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     &__header {
@@ -211,9 +210,9 @@
         font-size: 0.75rem;
         font-family: $font-mono;
         font-weight: 700;
-        color: $color-primary;
-        background-color: rgba($color-primary, 0.12);
-        border: 1px solid rgba($color-primary, 0.3);
+        color: #60a5fa;
+        background-color: rgba(30, 58, 138, 0.25);
+        border: 1px solid rgba(37, 99, 235, 0.35);
         border-radius: 0.35rem;
         padding: 0.15rem 0.45rem;
         margin-top: 1px;
@@ -224,19 +223,19 @@
         margin: 0;
         font-size: 0.925rem;
         font-weight: 500;
-        color: $text-heading;
+        color: $dark-text-primary;
         line-height: 1.5;
     }
 
     &__chevron {
         flex-shrink: 0;
-        color: $text-muted;
+        color: $dark-text-muted;
         transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
         margin-top: 2px;
 
         &--open {
             transform: rotate(180deg);
-            color: $color-primary;
+            color: #60a5fa;
         }
     }
 
@@ -246,7 +245,7 @@
         flex-direction: column;
         gap: 1rem;
         border-top: $border-base;
-        background-color: rgba($color-card-bg, 0.6);
+        background-color: rgba($dark-card, 0.5);
     }
 
     &__section {
@@ -257,7 +256,7 @@
         p {
             margin: 0;
             font-size: 0.875rem;
-            color: $text-body;
+            color: $dark-text-secondary;
             line-height: 1.6;
         }
     }
@@ -272,20 +271,20 @@
         width: fit-content;
 
         &--intention {
-            color: $color-secondary;
-            background-color: rgba($color-secondary, 0.12);
-            border: 1px solid rgba($color-secondary, 0.3);
+            color: $accent-amber;
+            background-color: rgba($accent-amber, 0.1);
+            border: 1px solid rgba($accent-amber, 0.25);
         }
 
         &--answer {
-            color: $color-score-high;
-            background-color: rgba($color-score-high, 0.12);
-            border: 1px solid rgba($color-score-high, 0.3);
+            color: $brand-accent;
+            background-color: rgba($brand-accent, 0.1);
+            border: 1px solid rgba($brand-accent, 0.25);
         }
     }
 }
 
-// ── Road Map ──────────────────────────────────────────────────────────────────
+// ── Road Map ──────────────────────────────────────────────────────────
 .roadmap-list {
     display: flex;
     flex-direction: column;
@@ -300,7 +299,7 @@
         top: 0;
         bottom: 0;
         width: 2px;
-        background: linear-gradient(to bottom, $color-primary, rgba($color-primary, 0.08));
+        background: linear-gradient(to bottom, #1e3a8a, rgba(30, 58, 138, 0.1));
         border-radius: 1px;
     }
 }
@@ -321,9 +320,8 @@
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        background-color: $color-card-bg;
-        border: 2px solid $color-primary;
-        box-shadow: 0 0 8px rgba($color-primary, 0.4);
+        background-color: $dark-card;
+        border: 2px solid #2563eb;
     }
 
     &__header {
@@ -336,9 +334,9 @@
         font-size: 0.725rem;
         font-family: $font-mono;
         font-weight: 700;
-        color: $color-primary;
-        background-color: rgba($color-primary, 0.12);
-        border: 1px solid rgba($color-primary, 0.3);
+        color: #60a5fa;
+        background-color: rgba(30, 58, 138, 0.25);
+        border: 1px solid rgba(37, 99, 235, 0.35);
         padding: 0.15rem 0.55rem;
         border-radius: 2rem;
     }
@@ -347,7 +345,7 @@
         margin: 0;
         font-size: 0.95rem;
         font-weight: 600;
-        color: $text-heading;
+        color: $dark-text-primary;
     }
 
     &__tasks {
@@ -363,7 +361,7 @@
             align-items: flex-start;
             gap: 0.6rem;
             font-size: 0.875rem;
-            color: $text-body;
+            color: $dark-text-secondary;
             line-height: 1.55;
         }
     }
@@ -373,12 +371,12 @@
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background-color: $color-secondary;
+        background-color: $accent-teal;
         margin-top: 8px;
     }
 }
 
-// ── Right Sidebar ─────────────────────────────────────────────────────────────
+// ── Right Sidebar ─────────────────────────────────────────────────────
 .interview-sidebar {
     width: 260px;
     flex-shrink: 0;
@@ -386,7 +384,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    background-color: $color-card-bg;
+    background-color: $dark-card;
 
     @media (max-width: 1024px) {
         width: 100%;
@@ -395,7 +393,7 @@
 
 .sidebar-divider {
     height: 1px;
-    background-color: $color-border;
+    background-color: $dark-border;
 }
 
 // Match Score
@@ -411,7 +409,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: $text-muted;
+        color: $dark-text-muted;
         margin: 0;
         align-self: flex-start;
     }
@@ -425,32 +423,29 @@
         align-items: center;
         justify-content: center;
         border: 4px solid;
-        background-color: rgba($color-elevated-bg, 0.6);
+        background-color: rgba($dark-elevated, 0.6);
 
         &.score--high {
-            border-color: $color-score-high;
-            box-shadow: 0 0 16px rgba($color-score-high, 0.2);
+            border-color: $brand-accent;
 
             ~ .match-score__sub {
-                color: $color-score-high;
+                color: $brand-accent;
             }
         }
 
         &.score--mid {
-            border-color: $color-warning;
-            box-shadow: 0 0 16px rgba($color-warning, 0.2);
+            border-color: $accent-amber;
 
             ~ .match-score__sub {
-                color: $color-warning;
+                color: $accent-amber;
             }
         }
 
         &.score--low {
-            border-color: $color-error;
-            box-shadow: 0 0 16px rgba($color-error, 0.2);
+            border-color: $accent-error;
 
             ~ .match-score__sub {
-                color: $color-error;
+                color: $accent-error;
             }
         }
     }
@@ -459,14 +454,14 @@
         font-size: 1.75rem;
         font-family: $font-mono;
         font-weight: 800;
-        color: $text-heading;
+        color: $dark-text-primary;
         line-height: 1;
     }
 
     &__pct {
         font-size: 0.75rem;
         font-family: $font-mono;
-        color: $text-muted;
+        color: $dark-text-muted;
         margin-top: -2px;
     }
 
@@ -474,7 +469,7 @@
         margin: 0;
         font-size: 0.775rem;
         font-weight: 500;
-        color: $text-muted;
+        color: $dark-text-muted;
         text-align: center;
     }
 }
@@ -491,7 +486,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: $text-muted;
+        color: $dark-text-muted;
         margin: 0;
     }
 
@@ -506,7 +501,7 @@
     font-size: 0.75rem;
     font-weight: 500;
     padding: 0.35rem 0.7rem;
-    border-radius: 0.4rem;
+    border-radius: 0.35rem;
     border: 1px solid;
     cursor: default;
     transition: transform 0.1s ease-in-out;
@@ -516,20 +511,20 @@
     }
 
     &--high {
-        color: $color-error;
-        background-color: rgba($color-error, 0.12);
-        border-color: rgba($color-error, 0.3);
+        color: $accent-error;
+        background-color: rgba($accent-error, 0.1);
+        border-color: rgba($accent-error, 0.25);
     }
 
     &--medium {
-        color: $color-warning;
-        background-color: rgba($color-warning, 0.12);
-        border-color: rgba($color-warning, 0.3);
+        color: $accent-amber;
+        background-color: rgba($accent-amber, 0.1);
+        border-color: rgba($accent-amber, 0.25);
     }
 
     &--low {
-        color: $color-score-high;
-        background-color: rgba($color-score-high, 0.12);
-        border-color: rgba($color-score-high, 0.3);
+        color: $brand-accent;
+        background-color: rgba($brand-accent, 0.1);
+        border-color: rgba($brand-accent, 0.25);
     }
 }

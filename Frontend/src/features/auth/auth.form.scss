@@ -3,7 +3,7 @@
 main {
     min-height: 100vh;
     width: 100%;
-    background-color: $color-canvas-bg;
+    background-color: $dark-bg;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,19 +12,19 @@ main {
     .form-container {
         width: 100%;
         max-width: 420px;
-        background-color: $color-card-bg;
+        background-color: $dark-card;
         border: $border-base;
-        border-radius: 1rem;
+        border-radius: 0.75rem;
         padding: 2.25rem 2rem;
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
 
         h1 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: $text-heading;
+            color: $dark-text-primary;
             letter-spacing: -0.02em;
         }
     }
@@ -43,23 +43,23 @@ main {
         label {
             font-size: 0.875rem;
             font-weight: 500;
-            color: $text-body;
+            color: $dark-text-secondary;
         }
 
         input {
             width: 100%;
-            background-color: $color-elevated-bg;
-            border: 1px solid $color-border;
+            background-color: $dark-elevated;
+            border: $border-base;
             outline: none;
             padding: 0.7rem 0.9rem;
             border-radius: 0.5rem;
-            color: $text-heading;
+            color: $dark-text-primary;
             font-family: $font-sans;
             font-size: 0.875rem;
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
             &::placeholder {
-                color: $text-muted;
+                color: $dark-text-muted;
             }
 
             &:focus {
@@ -76,18 +76,18 @@ main {
 
     p {
         font-size: 0.875rem;
-        color: $text-body;
+        color: $dark-text-secondary;
         text-align: center;
         margin-top: 0.25rem;
 
         a {
-            color: $color-primary;
+            color: #3b82f6;
             font-weight: 600;
             text-decoration: none;
             transition: color 0.15s ease-in-out;
 
             &:hover {
-                color: $color-primary-hover;
+                color: #60a5fa;
                 text-decoration: underline;
             }
         }
