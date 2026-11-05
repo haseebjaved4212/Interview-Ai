@@ -1,10 +1,10 @@
-# 🎯 Interview AI — Career Prep & Strategy Platform
+#  Interview AI — Career Prep & Strategy Platform
 
 > An intelligent, AI-driven career acceleration platform that evaluates candidate resumes against target job descriptions, produces role-specific technical and behavioral interview preparation roadmaps, calculates candidate-role match scores, identifies skill gaps, and compiles customized ATS-friendly PDF resumes.
 
 ---
 
-## 📸 Platform Showcase & Screenshots
+##  Platform Showcase & Screenshots
 
 ### 1. Authentication
 
@@ -54,7 +54,7 @@
 
 ---
 
-## ⚡ Architecture & Tech Stack
+##  Architecture & Tech Stack
 
 ```mermaid
 flowchart TD
@@ -105,7 +105,7 @@ flowchart TD
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### Prerequisites
 - **Node.js** >= 18.x installed
@@ -162,7 +162,7 @@ npm run build --prefix Frontend
 
 ---
 
-## 📄 Key Features Breakdown
+##  Key Features Breakdown
 
 - **Smart PDF & Text Analysis**: Upload any PDF resume or paste a textual description. `pdf-parse` extracts content directly in memory without disk writes.
 - **Fail-Safe AI Pipeline**: Equipped with adaptive multi-model failover (`gemini-3-flash-preview`, `gemini-flash-lite-latest`, `gemini-3.5-flash-lite`, `gemini-3.8-flash`) to ensure 100% uptime during peak model demand spikes.
@@ -172,6 +172,6 @@ npm run build --prefix Frontend
 
 ---
 
-## ⚖️ License
+##  License
 
 Distributed under the MIT License. Developed for intelligent candidate interview preparation.
