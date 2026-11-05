@@ -47,12 +47,11 @@ The platform returns actionable interview intelligence:
 - **In-Memory Resume PDF Parsing**:
   - Multipart upload handler using `multer` with memory storage and file size caps (3 MB).
   - High-speed raw text extraction via `pdf-parse`.
-- **Structured AI Output via Google Gemini**:
-  - Integration with `@google/genai` using `gemini-3.8-flash` for detailed interview report generation.
-  - Integration with `gemini-3-flash-preview` for ATS-optimized resume HTML synthesis.
-  - Strict output schemas enforced using `zod` and `zod-to-json-schema` (`responseMimeType: "application/json"`).
+- **Structured AI Output via Google Gemini with Resilient Failover**:
+  - Integration with `@google/genai` utilizing adaptive multi-model failover (`gemini-3-flash-preview`, `gemini-flash-lite-latest`, `gemini-3.5-flash-lite`, `gemini-3.8-flash`) for maximum resilience against high-demand spikes.
+  - Strict output schemas enforced using native `@google/genai` `Type` definitions (`responseMimeType: "application/json"`).
 - **Headless PDF Compilation**:
-  - Converts dynamically generated semantic HTML resumes into clean, ATS-compliant A4 PDF files using `puppeteer`.
+  - Converts dynamically generated semantic HTML resumes into clean, ATS-compliant A4 PDF files using `puppeteer` with automated system browser discovery and pipe transport.
   - Streams binary PDF files with appropriate attachment headers directly to the client.
 - **Comprehensive Report Persistence & History**:
   - Stores full interview reports in MongoDB linked by user reference.

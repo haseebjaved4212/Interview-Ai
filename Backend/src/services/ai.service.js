@@ -5,14 +5,16 @@ const ai = new GoogleGenAI({
     apiKey: process.env.GOOGLE_GENAI_API_KEY
 });
 
-// Supported Gemini models with fallbacks for maximum resilience
+// Supported Gemini models ordered by current active reliability and availability
 const CANDIDATE_MODELS = [
     process.env.GEMINI_MODEL,
-    "gemini-2.5-flash",
-    "gemini-1.5-flash",
-    "gemini-2.0-flash",
+    "gemini-3-flash-preview",
+    "gemini-flash-lite-latest",
+    "gemini-3.5-flash-lite",
+    "gemini-3.1-flash-lite",
     "gemini-3.8-flash",
-    "gemini-3-flash-preview"
+    "gemini-3.5-flash",
+    "gemini-flash-latest"
 ].filter(Boolean);
 
 // Structured JSON Schema for interview report
@@ -144,22 +146,18 @@ async function generateContentWithFallback({ contents, schema }) {
             throw new Error(`Model ${model} returned an empty response.`);
         } catch (error) {
             lastError = error;
-            console.warn(`[AI Service] Attempt with model "${model}" failed: ${error.message}`);
+            console.warn(`[AI Service] Model "${model}" failed: ${error.message}. Trying next candidate model...`);
 
-            // Only retry with next model if it's a model not found / unsupported error
-            const isModelNotFound = error.message && (
-                error.message.includes("404") ||
-                error.message.includes("NOT_FOUND") ||
-                error.message.includes("not found") ||
-                error.message.includes("unsupported") ||
-                error.message.includes("is not found") ||
-                error.status === 404
+            // Don't retry if the API key itself is clearly invalid
+            const isAuthKeyInvalid = error.message && (
+                error.message.includes("API_KEY_INVALID") ||
+                error.message.includes("API key not valid")
             );
 
-            if (!isModelNotFound) {
-                // If it's an authentication, quota or network failure, rethrow immediately
+            if (isAuthKeyInvalid) {
                 throw error;
             }
+            // For any other error (503 demand spike, 404 deprecated, 429 rate limit, 500 error), continue to next model
         }
     }
 
@@ -177,6 +175,23 @@ Job Description: ${jobDescription}
         contents: prompt,
         schema: interviewReportSchema
     });
+}
+
+function getSystemChromePath() {
+    const fs = require("fs");
+    const paths = [
+        process.env.PUPPETEER_EXECUTABLE_PATH,
+        "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe",
+        "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+        "/usr/bin/google-chrome",
+        "/usr/bin/chromium-browser"
+    ].filter(Boolean);
+
+    for (const p of paths) {
+        if (fs.existsSync(p)) return p;
+    }
+    return undefined;
 }
 
 async function generatePdfFromHtml(htmlContent) {
@@ -225,7 +240,22 @@ async function generatePdfFromHtml(htmlContent) {
         ? htmlContent.replace("</head>", `${cleanLightExportTheme}</head>`)
         : `${cleanLightExportTheme}${htmlContent}`;
 
-    const browser = await puppeteer.launch();
+    const executablePath = getSystemChromePath();
+    const launchOptions = {
+        headless: true,
+        pipe: true,
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--disable-dev-shm-usage",
+            "--disable-gpu"
+        ]
+    };
+    if (executablePath) {
+        launchOptions.executablePath = executablePath;
+    }
+
+    const browser = await puppeteer.launch(launchOptions);
     const page = await browser.newPage();
     await page.setContent(themedHtml, { waitUntil: "networkidle0" });
 

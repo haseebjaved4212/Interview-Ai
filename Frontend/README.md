@@ -35,6 +35,18 @@ The application allows users to:
 
 ---
 
+## 📸 Application Screenshots
+
+| Target Job & Profile Input | Full Strategy Report |
+| :---: | :---: |
+| ![Form Input](public/screenshots/04_home_form_filled.png) | ![Full Report](public/screenshots/05_interview_strategy_report.png) |
+
+| Technical Questions & Model Answers | 5-Day Study Road Map |
+| :---: | :---: |
+| ![Technical Questions](public/screenshots/06_technical_questions_section.png) | ![Preparation Road Map](public/screenshots/08_preparation_roadmap_section.png) |
+
+---
+
 ## Key Features
 
 - Single Page Application Architecture: Powered by React 19, React Router 8, and Vite for fast navigation and instant hot module replacement (HMR).
