@@ -159,13 +159,13 @@ Role & Responsibilities:
         console.log('Clicking Generate My Interview Strategy...');
         await page.click('.generate-btn');
 
-        // Wait brief moment to capture custom loading state if available
+        // Wait brief moment to capture custom loading state without resizing during in-flight fetch
         try {
-            await page.waitForSelector('.loading-screen', { timeout: 3000 });
+            await page.waitForSelector('.loading-screen', { timeout: 4000 });
             console.log('Capturing Custom Multi-Stage Loading Screen...');
-            await captureViewport(page, '05_desktop_loading_stage.png', 1440, 900, false);
-            await captureViewport(page, '05_mobile_loading_stage.png', 390, 844, true);
-            await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
+            await wait(400);
+            await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '05_desktop_loading_stage.png') });
+            console.log('Saved screenshot: 05_desktop_loading_stage.png');
         } catch (e) {
             console.log('Loading screen passed quickly or was not caught.');
         }
@@ -174,7 +174,7 @@ Role & Responsibilities:
         console.log('Waiting for AI generation to complete (approx 15-40s)...');
         await page.waitForSelector('.interview-page', { timeout: 90000 });
         console.log('Navigated to Report Page! URL:', page.url());
-        await wait(1500);
+        await wait(2000);
 
         // 6. Report View - Technical Questions (Desktop & Mobile)
         console.log('Capturing Technical Questions (Desktop & Mobile)...');
