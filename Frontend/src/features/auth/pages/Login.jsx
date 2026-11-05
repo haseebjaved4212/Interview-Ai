@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router';
 import { useAuth } from '../hooks/useAuth';
-import '../auth.form.scss';
 
 const Login = () => {
     const { loading, handleLogin, authError } = useAuth();
@@ -27,51 +26,61 @@ const Login = () => {
     }
 
     return (
-        <main>
-            <div className="form-container">
-                <h1>Login</h1>
+        <main className="auth-page">
+            <div className="auth-layout">
+                <aside className="auth-editorial-panel">
+                    <div className="auth-editorial-panel__tag">Interview AI Studio</div>
+                    <h2 className="auth-editorial-panel__quote">
+                        A considered method for your technical career.
+                    </h2>
+                    <p className="auth-editorial-panel__description">
+                        Curated inquiries, structural intent, model solutions, and day by day milestones tailored precisely to your profile.
+                    </p>
+                    <div className="auth-editorial-panel__footer">
+                        <span>Edition 2026</span>
+                        <span className="auth-editorial-panel__dot">&bull;</span>
+                        <span>Candidate Workspace</span>
+                    </div>
+                </aside>
 
-                {authError && (
-                    <div style={{
-                        color: "var(--color-error, #EF4444)",
-                        backgroundColor: "rgba(239, 68, 68, 0.12)",
-                        border: "1px solid rgba(239, 68, 68, 0.3)",
-                        padding: "0.6rem 0.8rem",
-                        borderRadius: "0.5rem",
-                        fontSize: "0.85rem"
-                    }}>
-                        {authError}
-                    </div>
-                )}
+                <div className="form-container">
+                    <h1>Login</h1>
 
-                <form onSubmit={handleSubmit}>
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            value={email}
-                            onChange={(e) => { setEmail(e.target.value); }}
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Enter email address"
-                            required
-                        />
-                    </div>
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            value={password}
-                            onChange={(e) => { setPassword(e.target.value); }}
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Enter password"
-                            required
-                        />
-                    </div>
-                    <button className="button primary-button">Login</button>
-                </form>
-                <p>Don't have an account? <Link to="/register">Register</Link></p>
+                    {authError && (
+                        <div className="form-error-alert" role="alert">
+                            {authError}
+                        </div>
+                    )}
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-group">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                value={email}
+                                onChange={(e) => { setEmail(e.target.value); }}
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter email address"
+                                required
+                            />
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="password">Password</label>
+                            <input
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value); }}
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                required
+                            />
+                        </div>
+                        <button className="button primary-button">Login</button>
+                    </form>
+                    <p>Don't have an account? <Link to="/register">Register</Link></p>
+                </div>
             </div>
         </main>
     );

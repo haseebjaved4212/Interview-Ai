@@ -12,7 +12,7 @@ function wait(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function waitForServer(url, timeoutMs = 30000) {
+async function waitForServer(url, timeoutMs = 45000) {
     const start = Date.now();
     while (Date.now() - start < timeoutMs) {
         try {
@@ -24,6 +24,20 @@ async function waitForServer(url, timeoutMs = 30000) {
         await wait(500);
     }
     throw new Error(`Timeout waiting for server at ${url}`);
+}
+
+async function captureViewport(page, filename, width, height, isMobile = false) {
+    await page.setViewport({
+        width,
+        height,
+        deviceScaleFactor: 2,
+        isMobile,
+        hasTouch: isMobile
+    });
+    await wait(400);
+    const dest = path.join(SCREENSHOTS_DIR, filename);
+    await page.screenshot({ path: dest, fullPage: false });
+    console.log(`Saved screenshot: ${filename} (${width}x${height})`);
 }
 
 async function run() {
@@ -69,79 +83,114 @@ async function run() {
         });
 
         const page = await browser.newPage();
+        page.on('console', msg => console.log('[Browser Console]', msg.text()));
+        page.on('pageerror', err => console.error('[Browser PageError]', err.message));
 
-        // 1. Register Page
-        console.log('Capturing Register Page...');
+        // 1. Register Page (Desktop & Mobile)
+        console.log('Capturing Register Page (Desktop & Mobile)...');
         await page.goto('http://localhost:5173/register', { waitUntil: 'networkidle0' });
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '01_register_page.png') });
+        await captureViewport(page, '01_desktop_register.png', 1440, 900, false);
+        await captureViewport(page, '01_mobile_register.png', 390, 844, true);
 
-        // 2. Login Page
-        console.log('Capturing Login Page...');
+        // 2. Login Page (Desktop & Mobile)
+        console.log('Capturing Login Page (Desktop & Mobile)...');
         await page.goto('http://localhost:5173/login', { waitUntil: 'networkidle0' });
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '02_login_page.png') });
+        await captureViewport(page, '02_desktop_login.png', 1440, 900, false);
+        await captureViewport(page, '02_mobile_login.png', 390, 844, true);
 
-        // Perform Login or Registration
-        const testEmail = `dev_${Date.now()}@example.com`;
-        const testUser = `HaseebDev`;
-        const testPass = `Pass1234!`;
+        // Perform Registration / Auth
+        const uniqueId = Date.now();
+        const testEmail = `studio_${uniqueId}@example.com`;
+        const testUser = `Studio_${uniqueId}`;
+        const testPass = `Studio2026!`;
 
         console.log('Registering test user...');
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
         await page.goto('http://localhost:5173/register', { waitUntil: 'networkidle0' });
+        await page.waitForSelector('#username');
         await page.type('#username', testUser);
         await page.type('#email', testEmail);
         await page.type('#password', testPass);
-        await Promise.all([
-            page.waitForNavigation({ waitUntil: 'networkidle0' }),
-            page.click('button.primary-button')
-        ]);
+        await wait(400);
+        await page.click('form button.primary-button');
+
+        try {
+            await page.waitForSelector('.home-page', { timeout: 15000 });
+        } catch (e) {
+            const currentUrl = page.url();
+            const errAlert = await page.$eval('.form-error-alert', el => el.textContent).catch(() => null);
+            console.error(`Failed to reach .home-page. URL: ${currentUrl}, Error on page: ${errAlert}`);
+            throw e;
+        }
 
         console.log('User registered & logged in! Current URL:', page.url());
 
-        // 3. Home Dashboard (Empty)
-        console.log('Capturing Home Dashboard...');
+        // 3. Home Dashboard (Desktop & Mobile)
+        console.log('Capturing Home Dashboard (Desktop & Mobile)...');
         await page.waitForSelector('.home-page');
-        await wait(1000);
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '03_home_dashboard.png') });
+        await wait(600);
+        await captureViewport(page, '03_desktop_home.png', 1440, 900, false);
+        await captureViewport(page, '03_mobile_home.png', 390, 844, true);
 
-        // 4. Fill in Target Job Description & Quick Self-Description
-        console.log('Filling form...');
-        const jobDesc = `We are hiring a Senior AI Engineer in Karachi.
-Role: Design and build production-grade AI applications using modern AI frameworks, multi-agent orchestration, RAG architectures, and scalable full-stack pipelines with React and Node.js.`;
-        const selfDesc = `Senior Full Stack & AI Engineer with 4 years experience building autonomous AI systems, vector search pipelines, React frontends, and cloud microservices.`;
-
-        await page.type('.panel--left textarea', jobDesc);
-        await page.type('.panel--right textarea', selfDesc);
+        // Reset to desktop for interaction
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
         await wait(500);
 
-        console.log('Capturing Filled Home Form...');
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '04_home_form_filled.png') });
+        // 4. Fill in Workspace inputs
+        console.log('Filling form inputs...');
+        const jobDesc = `We are seeking a Senior AI Systems Engineer in Karachi.
+Role & Responsibilities:
+- Architect enterprise-grade agentic AI pipelines with autonomous reasoning, tool execution, and memory.
+- Design retrieval-augmented generation (RAG) using dense vector embeddings and semantic search.
+- Build resilient microservices with Node.js, TypeScript, and modern React interfaces.`;
+
+        const selfDesc = `Senior AI Engineer with 4 years of experience delivering full-stack machine learning platforms, LangChain/LangGraph agent frameworks, distributed vector indexing, and React web apps.`;
+
+        await page.waitForSelector('#jobDescription');
+        await page.type('#jobDescription', jobDesc);
+        await page.waitForSelector('#selfDescription');
+        await page.type('#selfDescription', selfDesc);
+        await wait(500);
+
+        console.log('Capturing Filled Home Workspace...');
+        await captureViewport(page, '04_desktop_home_filled.png', 1440, 900, false);
 
         // 5. Submit Strategy Generation
         console.log('Clicking Generate My Interview Strategy...');
         await page.click('.generate-btn');
 
-        // Wait for loading screen or navigation
-        console.log('Waiting for AI generation to complete (approx 15-30s)...');
-        await page.waitForNavigation({ waitUntil: 'networkidle0', timeout: 90000 });
-        console.log('Navigated to Report Page! URL:', page.url());
+        // Wait brief moment to capture custom loading state if available
+        try {
+            await page.waitForSelector('.loading-screen', { timeout: 3000 });
+            console.log('Capturing Custom Multi-Stage Loading Screen...');
+            await captureViewport(page, '05_desktop_loading_stage.png', 1440, 900, false);
+            await captureViewport(page, '05_mobile_loading_stage.png', 390, 844, true);
+            await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
+        } catch (e) {
+            console.log('Loading screen passed quickly or was not caught.');
+        }
 
-        await page.waitForSelector('.interview-page');
+        // Wait for AI generation to complete (approx 15-40s)
+        console.log('Waiting for AI generation to complete (approx 15-40s)...');
+        await page.waitForSelector('.interview-page', { timeout: 90000 });
+        console.log('Navigated to Report Page! URL:', page.url());
         await wait(1500);
 
-        // 6. Full Interview Report (Overview)
-        console.log('Capturing Full Interview Report Overview...');
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '05_interview_strategy_report.png') });
-
-        // 7. Technical Questions Section (Expanded question)
-        console.log('Expanding technical question...');
+        // 6. Report View - Technical Questions (Desktop & Mobile)
+        console.log('Capturing Technical Questions (Desktop & Mobile)...');
+        // Expand first question card
         const firstQ = await page.$('.q-card__header');
         if (firstQ) {
             await firstQ.click();
             await wait(600);
         }
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '06_technical_questions_section.png') });
+        await captureViewport(page, '06_desktop_report_technical.png', 1440, 900, false);
+        await captureViewport(page, '06_mobile_report_technical.png', 390, 844, true);
 
-        // 8. Behavioral Questions Section
+        // Reset to desktop for further tabs
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
+
+        // 7. Report View - Behavioral Questions
         console.log('Navigating to Behavioral Questions...');
         const navBtns = await page.$$('.interview-nav__item');
         if (navBtns.length >= 2) {
@@ -152,31 +201,35 @@ Role: Design and build production-grade AI applications using modern AI framewor
                 await firstB.click();
                 await wait(600);
             }
-            await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '07_behavioral_questions_section.png') });
+            await captureViewport(page, '07_desktop_report_behavioral.png', 1440, 900, false);
         }
 
-        // 9. Preparation Road Map Section
+        // 8. Report View - Preparation Roadmap (Desktop & Mobile)
         console.log('Navigating to Road Map...');
         if (navBtns.length >= 3) {
             await navBtns[2].click(); // Roadmap
             await wait(800);
-            await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '08_preparation_roadmap_section.png') });
+            await captureViewport(page, '08_desktop_report_roadmap.png', 1440, 900, false);
+            await captureViewport(page, '08_mobile_report_roadmap.png', 390, 844, true);
         }
 
-        // 10. Sidebar Close-up (Match Score & Skill Gaps)
-        console.log('Capturing Sidebar (Match Score & Skill Gaps)...');
+        // 9. Match Score & Skill Gaps Close-up
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
         const sidebar = await page.$('.interview-sidebar');
         if (sidebar) {
-            await sidebar.screenshot({ path: path.join(SCREENSHOTS_DIR, '09_sidebar_match_score_skill_gaps.png') });
+            await sidebar.screenshot({ path: path.join(SCREENSHOTS_DIR, '09_sidebar_score_gaps.png') });
+            console.log('Saved sidebar close-up: 09_sidebar_score_gaps.png');
         }
 
-        // 11. Return to Home Dashboard to show recent reports list
+        // 10. Return to Home Dashboard to capture Recent Reports List
         console.log('Navigating back to Dashboard to capture Recent Reports...');
         await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
+        await page.waitForSelector('.home-page');
         await wait(1000);
-        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, '10_home_with_recent_reports.png') });
+        await captureViewport(page, '10_desktop_home_recent_reports.png', 1440, 900, false);
+        await captureViewport(page, '10_mobile_home_recent_reports.png', 390, 844, true);
 
-        console.log('ALL SCREENSHOTS CAPTURED SUCCESSFULLY!');
+        console.log('ALL EDITORIAL STUDIO SCREENSHOTS CAPTURED SUCCESSFULLY!');
         await browser.close();
 
     } finally {
@@ -187,7 +240,7 @@ Role: Design and build production-grade AI applications using modern AI framewor
 }
 
 run().then(() => {
-    console.log('Screenshot generation complete.');
+    console.log('Screenshot execution complete.');
     process.exit(0);
 }).catch(err => {
     console.error('Screenshot script failed:', err);

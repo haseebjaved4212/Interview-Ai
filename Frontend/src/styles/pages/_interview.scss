@@ -1,0 +1,70 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: PAGES - REPORT VIEW
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.interview-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  display: flex;
+  align-items: stretch;
+  padding: var(--space-6);
+
+  @include respond-to('lg') {
+    padding: var(--space-3);
+  }
+}
+
+.interview-divider {
+  display: none; // Handled by hairline grid boundaries
+}
+
+// ── Central Reading Content ───────────────────────────────────────────────────
+.interview-content {
+  padding: var(--space-8) var(--space-8);
+  overflow-y: auto;
+  min-height: initial;
+  max-height: calc(100vh - 3rem);
+  background-color: var(--color-card);
+
+  @include respond-to('lg') {
+    max-height: none;
+    overflow-y: visible;
+    padding: var(--space-6) var(--space-5);
+  }
+
+  section {
+    animation: fadeIn var(--duration-normal) var(--ease-editorial);
+  }
+}
+
+.content-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border-hairline);
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: var(--track-tight);
+    margin: 0;
+  }
+
+  &__count {
+    @include mono-stamp;
+    color: var(--color-ink-muted);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border-hairline);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+  }
+}

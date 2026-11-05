@@ -1,8 +1,44 @@
-import { useState, useRef } from 'react';
-import "../style/home.scss";
+import { useState, useRef, useEffect } from 'react';
 import { useInterview } from '../hooks/useInterview.js';
 import { useAuth } from '../../auth/hooks/useAuth.js';
 import { useNavigate } from 'react-router';
+
+const LOADING_STAGES = [
+    "Reading the job description",
+    "Mapping your profile",
+    "Drafting questions",
+    "Calibrating preparation roadmap"
+];
+
+const GenerationLoader = () => {
+    const [stageIndex, setStageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setStageIndex(prev => (prev + 1) % LOADING_STAGES.length);
+        }, 5500);
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <main className='loading-screen'>
+            <div className='loading-badge'>Generation in Progress</div>
+            <h1 className='loading-title'>{LOADING_STAGES[stageIndex]}</h1>
+            <p className='loading-sub'>Analyzing requirements and crafting tailored interview intelligence</p>
+            <div className='loading-meter' role='progressbar' aria-valuetext={LOADING_STAGES[stageIndex]} />
+            <div className='loading-stages'>
+                {LOADING_STAGES.map((stage, idx) => (
+                    <span
+                        key={stage}
+                        className={`loading-stage-dot ${idx === stageIndex ? 'loading-stage-dot--active' : idx < stageIndex ? 'loading-stage-dot--done' : ''}`}
+                    >
+                        {stage}
+                    </span>
+                ))}
+            </div>
+        </main>
+    );
+};
 
 const Home = () => {
     const { loading, generateReport, reports } = useInterview();
@@ -52,39 +88,22 @@ const Home = () => {
     };
 
     if (loading) {
-        return (
-            <main className='loading-screen'>
-                <h1>Generating your customized interview strategy...</h1>
-            </main>
-        );
+        return <GenerationLoader />;
     }
 
     return (
         <div className='home-page'>
             {/* Top Bar with User Info & Logout */}
-            <div style={{
-                width: '100%',
-                maxWidth: '960px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                paddingBottom: '0.5rem'
-            }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '50%',
-                        backgroundColor: 'var(--color-score-high, #10B981)'
-                    }} />
-                    <span style={{ fontSize: '0.85rem', color: 'var(--text-body, #9CA3AF)' }}>
-                        Logged in as <strong style={{ color: 'var(--text-heading, #F9FAFB)' }}>{user?.username || 'Candidate'}</strong>
+            <div className='home-topbar'>
+                <div className='home-topbar__user'>
+                    <span className='home-topbar__indicator' />
+                    <span className='home-topbar__text'>
+                        Logged in as <strong>{user?.username || 'Candidate'}</strong>
                     </span>
                 </div>
                 <button
                     onClick={handleLogout}
-                    className='button secondary-button'
-                    style={{ fontSize: '0.8rem', padding: '0.4rem 0.9rem' }}
+                    className='button secondary-button home-topbar__logout'
                 >
                     Logout
                 </button>
@@ -97,17 +116,7 @@ const Home = () => {
             </header>
 
             {formError && (
-                <div style={{
-                    width: '100%',
-                    maxWidth: '960px',
-                    color: 'var(--color-error, #EF4444)',
-                    backgroundColor: 'rgba(239, 68, 68, 0.12)',
-                    border: '1px solid rgba(239, 68, 68, 0.3)',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '0.5rem',
-                    fontSize: '0.875rem',
-                    textAlign: 'center'
-                }}>
+                <div className='form-error-alert' role='alert'>
                     {formError}
                 </div>
             )}
@@ -126,6 +135,8 @@ const Home = () => {
                             <span className='badge badge--required'>Required</span>
                         </div>
                         <textarea
+                            id="jobDescription"
+                            name="jobDescription"
                             value={jobDescription}
                             onChange={(e) => {
                                 setJobDescription(e.target.value);

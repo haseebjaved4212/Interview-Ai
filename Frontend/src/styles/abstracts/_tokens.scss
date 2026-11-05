@@ -1,0 +1,141 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO DESIGN SYSTEM: TOKENS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── Palette: Paper Canvas & Surface Tiers ─────────────────────────────────────
+$paper-base:             #F6F2EA; // Warm cream primary canvas
+$paper-surface:          #EDE8DE; // Subordinate panel surface
+$paper-card:             #FDFAF5; // Elevated crisp stationery card face
+$paper-elevated:         #E5DFD2; // Hover & interactive layer
+$paper-sunken:           #DCD5C6; // Inset inputs & deep recesses
+
+// ── Editorial Hairlines & Borders ─────────────────────────────────────────────
+$rule-hairline:          #E2DDD2; // Subtle 1px dividing hairline
+$rule-border:            #D5CEBF; // Card & field outline
+$rule-border-hover:      #B7AE9C; // Interactive boundary hover
+$rule-border-focus:      #2D3FE0; // Cobalt focus boundary
+
+// ── Ink Typography Tiers ──────────────────────────────────────────────────────
+$ink-primary:            #1C1A17; // Deepest carbon ink (warm, never pure black)
+$ink-secondary:          #5A554E; // Muted mineral stone for editorial body/descriptions
+$ink-muted:              #8C8476; // Quiet captions, timestamps, placeholders
+$ink-faint:              #BDB5A5; // Inactive indicators & hairline marks
+$ink-inverse:            #F6F2EA; // Contrast paper text for solid buttons
+
+// ── Primary Action Accent (Cobalt) ────────────────────────────────────────────
+$accent-cobalt:          #2D3FE0; // Authoritative electric royal cobalt
+$accent-cobalt-hover:    #1F2FBD; // Deep ink cobalt for active/hover states
+$accent-cobalt-wash:     #ECEEFC; // 8% tint for active chips & highlight pills
+
+// ── Semantic Accents ──────────────────────────────────────────────────────────
+$accent-terracotta:      #C8553D; // Natural matte terracotta for gaps and warnings
+$accent-terracotta-wash: #FAF0EE;
+$accent-terracotta-border:#EDC8C0;
+
+$accent-sage:            #8FA58A; // Botanical muted sage for strengths & high scores
+$accent-sage-dark:       #3A5437; // Contrast ink for sage tags
+$accent-sage-wash:       #F0F4EF;
+$accent-sage-border:     #D2E0D0;
+
+$accent-butter:          #DDA73A; // Muted aged butter yellow for highlights
+$accent-butter-dark:     #6E5114;
+$accent-butter-wash:     #FBF6EB;
+$accent-butter-border:   #EBD9A8;
+
+// ── Spacing Scale (8px Grid Alignment) ────────────────────────────────────────
+$space-0:                0;
+$space-1:                0.25rem;  // 4px
+$space-2:                0.5rem;   // 8px
+$space-3:                0.75rem;  // 12px
+$space-4:                1rem;     // 16px
+$space-5:                1.25rem;  // 20px
+$space-6:                1.5rem;   // 24px
+$space-8:                2rem;     // 32px
+$space-10:               2.5rem;   // 40px
+$space-12:               3rem;     // 48px
+$space-16:               4rem;     // 64px
+$space-20:               5rem;     // 80px
+
+// ── Corner Radii (Crisp Paper Stationery Cuts) ────────────────────────────────
+$radius-xs:              2px;
+$radius-sm:              4px;
+$radius-md:              6px;
+$radius-lg:              10px;
+$radius-pill:            9999px;
+
+// ── Z-Index Layers ────────────────────────────────────────────────────────────
+$z-canvas:               0;
+$z-surface:              1;
+$z-overlay:              10;
+$z-sticky:               20;
+$z-dropdown:             30;
+$z-modal:                50;
+
+// ── CSS Custom Properties (:root) ─────────────────────────────────────────────
+// Components exclusively read var(--...) from here
+:root {
+  // Surfaces
+  --color-canvas: #{$paper-base};
+  --color-surface: #{$paper-surface};
+  --color-card: #{$paper-card};
+  --color-elevated: #{$paper-elevated};
+  --color-sunken: #{$paper-sunken};
+
+  // Borders & Dividers
+  --color-border-hairline: #{$rule-hairline};
+  --color-border: #{$rule-border};
+  --color-border-hover: #{$rule-border-hover};
+  --color-border-focus: #{$rule-border-focus};
+
+  // Ink Typography
+  --color-ink: #{$ink-primary};
+  --color-ink-secondary: #{$ink-secondary};
+  --color-ink-muted: #{$ink-muted};
+  --color-ink-faint: #{$ink-faint};
+  --color-ink-inverse: #{$ink-inverse};
+
+  // Accents
+  --color-cobalt: #{$accent-cobalt};
+  --color-cobalt-hover: #{$accent-cobalt-hover};
+  --color-cobalt-wash: #{$accent-cobalt-wash};
+
+  --color-terracotta: #{$accent-terracotta};
+  --color-terracotta-wash: #{$accent-terracotta-wash};
+  --color-terracotta-border: #{$accent-terracotta-border};
+
+  --color-sage: #{$accent-sage-dark};
+  --color-sage-wash: #{$accent-sage-wash};
+  --color-sage-border: #{$accent-sage-border};
+
+  --color-butter: #{$accent-butter-dark};
+  --color-butter-wash: #{$accent-butter-wash};
+  --color-butter-border: #{$accent-butter-border};
+
+  // Spacing
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-5: #{$space-5};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
+  --space-10: #{$space-10};
+  --space-12: #{$space-12};
+  --space-16: #{$space-16};
+  --space-20: #{$space-20};
+
+  // Radii
+  --radius-xs: #{$radius-xs};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-pill: #{$radius-pill};
+
+  // Shadows (Delicate ambient paper diffusion)
+  --shadow-subtle: 0 1px 2px rgba(28, 26, 23, 0.04), 0 2px 6px rgba(28, 26, 23, 0.02);
+  --shadow-card: 0 1px 3px rgba(28, 26, 23, 0.05), 0 6px 18px rgba(28, 26, 23, 0.04);
+  --shadow-float: 0 12px 32px rgba(28, 26, 23, 0.08), 0 2px 6px rgba(28, 26, 23, 0.03);
+
+  // Focus Ring
+  --focus-ring: 0 0 0 2px #{$paper-base}, 0 0 0 4px #{$accent-cobalt};
+}

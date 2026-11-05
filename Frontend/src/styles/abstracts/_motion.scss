@@ -1,0 +1,90 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: MOTION
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ── Easings ───────────────────────────────────────────────────────────────────
+$ease-editorial:     cubic-bezier(0.16, 1, 0.3, 1); // Snappy mechanical entrance
+$ease-smooth:        cubic-bezier(0.4, 0, 0.2, 1);  // Continuous state interpolation
+$ease-spring:        cubic-bezier(0.34, 1.56, 0.64, 1); // Tactile overshoot
+$ease-accordion:     cubic-bezier(0.25, 1, 0.5, 1); // Content drop reveal
+
+// ── Durations ─────────────────────────────────────────────────────────────────
+$duration-instant:   100ms;
+$duration-fast:      180ms;
+$duration-normal:    280ms;
+$duration-slow:      450ms;
+$duration-deliberate:700ms;
+
+:root {
+  --ease-editorial: #{$ease-editorial};
+  --ease-smooth: #{$ease-smooth};
+  --ease-accordion: #{$ease-accordion};
+
+  --duration-fast: #{$duration-fast};
+  --duration-normal: #{$duration-normal};
+  --duration-slow: #{$duration-slow};
+}
+
+// ── Reduced Motion Mixin ──────────────────────────────────────────────────────
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+    @content;
+  }
+}
+
+// ── Keyframe Animations ───────────────────────────────────────────────────────
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes accordionExpand {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGently {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes progressSweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}

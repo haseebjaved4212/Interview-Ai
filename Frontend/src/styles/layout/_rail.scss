@@ -1,0 +1,38 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: LAYOUT - RIGHT RAIL
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.interview-sidebar {
+  padding: var(--space-6) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  background-color: var(--color-surface);
+  border-left: 1px solid var(--color-border-hairline);
+
+  @include respond-to('lg') {
+    border-left: none;
+    border-top: 1px solid var(--color-border-hairline);
+    padding: var(--space-5) var(--space-4);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+
+  @include respond-to('sm') {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.sidebar-divider {
+  height: 1px;
+  background-color: var(--color-border-hairline);
+  margin: var(--space-2) 0;
+
+  @include respond-to('lg') {
+    display: none;
+  }
+}

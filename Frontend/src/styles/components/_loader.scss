@@ -1,0 +1,106 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: COMPONENTS - MULTI-STAGE GENERATION LOADER
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.loading-screen {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-8);
+  background-color: var(--color-canvas);
+  text-align: center;
+  animation: fadeIn var(--duration-normal) var(--ease-smooth);
+}
+
+.loading-badge {
+  @include mono-stamp;
+  color: var(--color-cobalt);
+  background-color: var(--color-cobalt-wash);
+  border: 1px solid var(--color-cobalt-border);
+  padding: 0.3rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.loading-title {
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  color: var(--color-ink);
+  letter-spacing: var(--track-tight);
+  max-width: 620px;
+  line-height: var(--leading-tight);
+  margin: 0;
+  min-height: 2.8rem;
+  animation: pulseGently 2.4s ease-in-out infinite;
+}
+
+.loading-sub {
+  font-size: var(--text-lead);
+  color: var(--color-ink-secondary);
+  max-width: 480px;
+  line-height: var(--leading-body);
+  margin: 0;
+}
+
+// ── Refined Hairline Progress Track ───────────────────────────────────────────
+.loading-meter {
+  width: 280px;
+  height: 2px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  position: relative;
+  overflow: hidden;
+  margin: var(--space-3) 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 35%;
+    height: 100%;
+    background-color: var(--color-cobalt);
+    border-radius: var(--radius-pill);
+    animation: progressSweep 2s var(--ease-smooth) infinite;
+  }
+}
+
+// ── Multi-stage Stepper Indicator ─────────────────────────────────────────────
+.loading-stages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  max-width: 640px;
+  margin-top: var(--space-2);
+}
+
+.loading-stage-dot {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  color: var(--color-ink-muted);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-hairline);
+  background-color: var(--color-surface);
+  transition: all var(--duration-normal) var(--ease-smooth);
+
+  &--active {
+    color: var(--color-cobalt);
+    background-color: var(--color-cobalt-wash);
+    border-color: var(--color-cobalt-border);
+    font-weight: 600;
+  }
+
+  &--done {
+    color: var(--color-sage);
+    background-color: var(--color-sage-wash);
+    border-color: var(--color-sage-border);
+  }
+}

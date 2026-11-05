@@ -1,0 +1,28 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: MAIN ENTRY POINT
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// 1. Abstracts (Tokens, Typography, Motion, Mixins, Functions)
+@use './abstracts';
+
+// 2. Base (Reset, Canvas, Headings, Global Scrollbar, Selection)
+@use './base/reset';
+@use './base/base';
+
+// 3. Layout (Split Auth Grid, 3-Column Workspace, Sticky Nav, Right Rail)
+@use './layout/grid';
+@use './layout/navigation';
+@use './layout/rail';
+
+// 4. Components (Buttons, Inputs, Cards, Badges, Match Score Hero, Loader)
+@use './components/buttons';
+@use './components/inputs';
+@use './components/cards';
+@use './components/badges';
+@use './components/score';
+@use './components/loader';
+
+// 5. Pages (Auth Split, Home Workspace, Interview Report View)
+@use './pages/auth';
+@use './pages/home';
+@use './pages/interview';

@@ -1,0 +1,120 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: COMPONENTS - BUTTONS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.button {
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  user-select: none;
+  border: 1px solid transparent;
+  transition: background-color var(--duration-fast) var(--ease-smooth),
+              border-color var(--duration-fast) var(--ease-smooth),
+              color var(--duration-fast) var(--ease-smooth),
+              transform var(--duration-instant) var(--ease-smooth),
+              box-shadow var(--duration-fast) var(--ease-smooth);
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  // ── Primary Action Button (Cobalt) ──────────────────────────────────────────
+  &.primary-button {
+    background-color: var(--color-cobalt);
+    color: var(--color-ink-inverse);
+    border-color: var(--color-cobalt);
+    box-shadow: 0 1px 3px rgba(45, 63, 224, 0.25);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-cobalt-hover);
+      border-color: var(--color-cobalt-hover);
+      box-shadow: 0 3px 8px rgba(45, 63, 224, 0.35);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--color-cobalt-hover);
+      transform: translateY(1px);
+    }
+  }
+
+  // ── Secondary Editorial Button (Tactile Hairline) ───────────────────────────
+  &.secondary-button {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-ink);
+    box-shadow: var(--shadow-subtle);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-elevated);
+      border-color: var(--color-border-hover);
+      color: var(--color-ink);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--color-sunken);
+      transform: translateY(1px);
+    }
+  }
+}
+
+// ── Focal Generate CTA Button (Home Page) ─────────────────────────────────────
+.generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0.85rem 1.85rem;
+  background-color: var(--color-cobalt);
+  color: var(--color-ink-inverse);
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  font-weight: 600;
+  letter-spacing: var(--track-normal);
+  border: 1px solid var(--color-cobalt);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(45, 63, 224, 0.25), 0 8px 20px rgba(45, 63, 224, 0.2);
+  transition: background-color var(--duration-fast) var(--ease-smooth),
+              transform var(--duration-instant) var(--ease-smooth),
+              box-shadow var(--duration-fast) var(--ease-smooth);
+
+  svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-cobalt-hover);
+    border-color: var(--color-cobalt-hover);
+    box-shadow: 0 4px 12px rgba(45, 63, 224, 0.35), 0 12px 28px rgba(45, 63, 224, 0.25);
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(45, 63, 224, 0.25);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+}

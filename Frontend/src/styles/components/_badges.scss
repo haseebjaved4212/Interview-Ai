@@ -1,0 +1,77 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: COMPONENTS - BADGES & TAGS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+// ── Form Header Badges ────────────────────────────────────────────────────────
+.badge {
+  @include mono-stamp;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+
+  &--required {
+    color: var(--color-terracotta);
+    background-color: var(--color-terracotta-wash);
+    border: 1px solid var(--color-terracotta-border);
+  }
+
+  &--best {
+    color: var(--color-sage);
+    background-color: var(--color-sage-wash);
+    border: 1px solid var(--color-sage-border);
+  }
+}
+
+// ── Ranked Skill Gap Tags ─────────────────────────────────────────────────────
+.skill-gaps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+
+  &__label {
+    @include mono-stamp;
+    color: var(--color-ink-muted);
+    margin: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+}
+
+.skill-tag {
+  font-family: var(--font-ui);
+  font-size: var(--text-sub);
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: default;
+  transition: transform var(--duration-fast) var(--ease-smooth);
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &--high {
+    color: var(--color-terracotta);
+    background-color: var(--color-terracotta-wash);
+    border: 1px solid var(--color-terracotta-border);
+  }
+
+  &--medium {
+    color: var(--color-butter);
+    background-color: var(--color-butter-wash);
+    border: 1px solid var(--color-butter-border);
+  }
+
+  &--low {
+    color: var(--color-sage);
+    background-color: var(--color-sage-wash);
+    border: 1px solid var(--color-sage-border);
+  }
+}

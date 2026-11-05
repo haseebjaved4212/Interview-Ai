@@ -1,0 +1,10 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: FUNCTIONS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use 'sass:math';
+
+// Helper to convert pixel values to rem units based on 16px baseline
+@function rem($px) {
+  @return math.div($px, 16px) * 1rem;
+}

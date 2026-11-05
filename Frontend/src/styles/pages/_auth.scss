@@ -1,0 +1,164 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: PAGES - AUTHENTICATION (ASYMMETRIC SPLIT LAYOUT)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  background-color: var(--color-canvas);
+
+  @include respond-to('sm') {
+    padding: var(--space-4);
+  }
+}
+
+.auth-layout {
+  width: 100%;
+  max-width: 980px;
+  min-height: 560px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    min-height: auto;
+  }
+}
+
+// ── Left Editorial Studio Brand Panel ─────────────────────────────────────────
+.auth-editorial-panel {
+  background-color: var(--color-surface);
+  border-right: 1px solid var(--color-border-hairline);
+  padding: var(--space-12) var(--space-10);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+  position: relative;
+
+  @include respond-to('md') {
+    padding: var(--space-8) var(--space-6);
+    border-right: none;
+    border-bottom: 1px solid var(--color-border-hairline);
+  }
+
+  &__tag {
+    @include mono-stamp;
+    color: var(--color-cobalt);
+    background-color: var(--color-cobalt-wash);
+    border: 1px solid var(--color-cobalt-border);
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--radius-pill);
+    width: fit-content;
+  }
+
+  &__quote {
+    font-family: var(--font-display);
+    font-size: var(--text-h1);
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--track-tight);
+    color: var(--color-ink);
+    margin: 0;
+  }
+
+  &__description {
+    font-size: var(--text-lead);
+    color: var(--color-ink-secondary);
+    line-height: var(--leading-body);
+    margin: 0;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--text-meta);
+    color: var(--color-ink-muted);
+    letter-spacing: var(--track-snug);
+  }
+
+  &__dot {
+    color: var(--color-border-hover);
+  }
+}
+
+// ── Right Form Container ──────────────────────────────────────────────────────
+.form-container {
+  padding: var(--space-12) var(--space-10);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-6);
+  background-color: var(--color-card);
+
+  @include respond-to('sm') {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: var(--text-h2);
+    font-weight: 700;
+    color: var(--color-ink);
+    letter-spacing: var(--track-tight);
+    margin: 0;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .button.primary-button {
+    width: 100%;
+    margin-top: var(--space-2);
+    padding: 0.85rem 1.25rem;
+  }
+
+  p {
+    font-size: var(--text-sub);
+    color: var(--color-ink-secondary);
+    text-align: center;
+    margin: 0;
+
+    a {
+      color: var(--color-cobalt);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-cobalt-hover);
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// ── Shared Semantic Form Error Alert ──────────────────────────────────────────
+.form-error-alert {
+  background-color: var(--color-terracotta-wash);
+  color: var(--color-terracotta);
+  border: 1px solid var(--color-terracotta-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-ui);
+  font-size: var(--text-sub);
+  line-height: var(--leading-snug);
+  text-align: center;
+  animation: fadeIn var(--duration-fast) var(--ease-smooth);
+}

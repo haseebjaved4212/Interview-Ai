@@ -1,0 +1,43 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: LAYOUT - GRID
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+// ── Auth Split Grid ───────────────────────────────────────────────────────────
+.auth-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-canvas);
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Interview 3-Column Workspace Grid ─────────────────────────────────────────
+.interview-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr) 280px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 3rem);
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+
+  @include respond-to('xl') {
+    grid-template-columns: 220px minmax(0, 1fr) 260px;
+  }
+
+  @include respond-to('lg') {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+  }
+}
