@@ -188,33 +188,36 @@ Role & Responsibilities:
         await captureViewport(page, '06_mobile_report_technical.png', 390, 844, true);
 
         // Reset to desktop for further tabs
-        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
+        await wait(500);
 
         // 7. Report View - Behavioral Questions
         console.log('Navigating to Behavioral Questions...');
-        const navBtns = await page.$$('.interview-nav__item');
-        if (navBtns.length >= 2) {
-            await navBtns[1].click(); // Behavioral
+        const allTabs = await page.$$('.interview-nav__item');
+        if (allTabs.length >= 2) {
+            await allTabs[1].click(); // Behavioral
             await wait(800);
             const firstB = await page.$('.q-card__header');
             if (firstB) {
                 await firstB.click();
-                await wait(600);
+                await wait(500);
             }
             await captureViewport(page, '07_desktop_report_behavioral.png', 1440, 900, false);
         }
 
         // 8. Report View - Preparation Roadmap (Desktop & Mobile)
         console.log('Navigating to Road Map...');
-        if (navBtns.length >= 3) {
-            await navBtns[2].click(); // Roadmap
+        const freshTabs = await page.$$('.interview-nav__item');
+        if (freshTabs.length >= 3) {
+            await freshTabs[2].click(); // Roadmap
             await wait(800);
             await captureViewport(page, '08_desktop_report_roadmap.png', 1440, 900, false);
             await captureViewport(page, '08_mobile_report_roadmap.png', 390, 844, true);
         }
 
         // 9. Match Score & Skill Gaps Close-up
-        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
+        await wait(500);
         const sidebar = await page.$('.interview-sidebar');
         if (sidebar) {
             await sidebar.screenshot({ path: path.join(SCREENSHOTS_DIR, '09_sidebar_score_gaps.png') });
