@@ -229,7 +229,16 @@ Role & Responsibilities:
         await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
         await page.waitForSelector('.home-page');
         await wait(1000);
+        const recentEl = await page.$('.recent-reports');
+        if (recentEl) {
+            await recentEl.scrollIntoView();
+            await wait(500);
+        }
         await captureViewport(page, '10_desktop_home_recent_reports.png', 1440, 900, false);
+        if (recentEl) {
+            await recentEl.scrollIntoView();
+            await wait(500);
+        }
         await captureViewport(page, '10_mobile_home_recent_reports.png', 390, 844, true);
 
         console.log('ALL EDITORIAL STUDIO SCREENSHOTS CAPTURED SUCCESSFULLY!');

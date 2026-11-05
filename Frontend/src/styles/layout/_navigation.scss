@@ -14,15 +14,18 @@
   border-right: 1px solid var(--color-border-hairline);
 
   @include respond-to('lg') {
+    flex: 0 0 auto;
+    height: auto;
+    min-height: auto;
     border-right: none;
     border-bottom: 1px solid var(--color-border-hairline);
     padding: var(--space-3) var(--space-4);
-    gap: var(--space-3);
+    gap: var(--space-2);
     position: sticky;
     top: 0;
     z-index: 20;
+    background-color: var(--color-surface);
     backdrop-filter: blur(8px);
-    background-color: rgba(246, 242, 234, 0.95);
   }
 
   .nav-content {
@@ -34,6 +37,7 @@
       flex-direction: row;
       align-items: center;
       gap: var(--space-2);
+      flex-wrap: nowrap;
       overflow-x: auto;
       padding-bottom: 2px;
       -webkit-overflow-scrolling: touch;

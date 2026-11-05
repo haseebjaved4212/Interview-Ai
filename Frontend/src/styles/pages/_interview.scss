@@ -15,6 +15,8 @@
 
   @include respond-to('lg') {
     padding: var(--space-3);
+    display: block;
+    min-height: auto;
   }
 }
 
@@ -33,7 +35,7 @@
   @include respond-to('lg') {
     max-height: none;
     overflow-y: visible;
-    padding: var(--space-6) var(--space-5);
+    padding: var(--space-5) var(--space-4);
   }
 
   section {
