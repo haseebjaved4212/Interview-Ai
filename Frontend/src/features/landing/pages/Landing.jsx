@@ -2,6 +2,7 @@ import { Link } from 'react-router';
 import { useAuth } from '../../auth/hooks/useAuth';
 import PublicNavbar from '../components/PublicNavbar';
 import HeroPreviewCard from '../components/HeroPreviewCard';
+import WorkflowSection from '../components/WorkflowSection';
 
 const Landing = () => {
     const { user } = useAuth();
@@ -50,6 +51,9 @@ const Landing = () => {
                         </div>
                     </div>
                 </section>
+
+                {/* ── 3. How It Works (Workflow Section) ── */}
+                <WorkflowSection />
             </main>
         </div>
     );

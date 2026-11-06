@@ -15,7 +15,7 @@
 @use './layout/rail';
 @use './layout/navbar-public';
 
-// 4. Components (Buttons, Inputs, Cards, Badges, Match Score Hero, Loader, Preview Card)
+// 4. Components (Buttons, Inputs, Cards, Badges, Match Score Hero, Loader, Preview Card, Workflow)
 @use './components/buttons';
 @use './components/inputs';
 @use './components/cards';
@@ -23,6 +23,7 @@
 @use './components/score';
 @use './components/loader';
 @use './components/preview-card';
+@use './components/workflow';
 
 // 5. Pages (Auth Split, Home Workspace, Interview Report View, Landing)
 @use './pages/auth';
