@@ -62,12 +62,32 @@ async function run() {
         await page.screenshot({ path: desktopPath });
         console.log(`Saved: ${desktopPath}`);
 
+        // Desktop full page or workflow scroll
+        const workflowEl = await page.$('#how-it-works');
+        if (workflowEl) {
+            await workflowEl.scrollIntoView();
+            await wait(600);
+            const desktopWorkflowPath = path.join(SCREENSHOTS_DIR, `${stageName}_desktop_workflow.png`);
+            await page.screenshot({ path: desktopWorkflowPath });
+            console.log(`Saved: ${desktopWorkflowPath}`);
+        }
+
         // 2. Mobile 390x844
         await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+        await page.goto('http://127.0.0.1:5173/', { waitUntil: 'networkidle0' });
         await wait(600);
         const mobilePath = path.join(SCREENSHOTS_DIR, `${stageName}_mobile.png`);
         await page.screenshot({ path: mobilePath });
         console.log(`Saved: ${mobilePath}`);
+
+        const mobileWorkflowEl = await page.$('#how-it-works');
+        if (mobileWorkflowEl) {
+            await mobileWorkflowEl.scrollIntoView();
+            await wait(600);
+            const mobileWorkflowPath = path.join(SCREENSHOTS_DIR, `${stageName}_mobile_workflow.png`);
+            await page.screenshot({ path: mobileWorkflowPath });
+            console.log(`Saved: ${mobileWorkflowPath}`);
+        }
 
         // 3. Mobile Menu opened (if toggle exists)
         const toggle = await page.$('.public-nav__toggle');
