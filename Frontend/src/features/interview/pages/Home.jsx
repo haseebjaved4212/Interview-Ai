@@ -43,6 +43,10 @@ const GenerationLoader = () => {
 const Home = () => {
     const { loading, generateReport, reports } = useInterview();
     const { user, handleLogout } = useAuth();
+    const onLogout = async () => {
+        await handleLogout();
+        navigate('/');
+    };
     const [jobDescription, setJobDescription] = useState("");
     const [selfDescription, setSelfDescription] = useState("");
     const [selectedFileName, setSelectedFileName] = useState("");
