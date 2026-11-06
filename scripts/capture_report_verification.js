@@ -96,7 +96,11 @@ async function run() {
 
         // 4. Mobile Report View (Bug 2)
         console.log('Capturing Bug 2 Fix: Mobile Report View...');
-        await captureViewport(page, 'bugfix2_mobile_report_view.png', 390, 844, true);
+        await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+        await page.waitForSelector('.q-card', { timeout: 15000 });
+        await wait(800);
+        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, 'bugfix2_mobile_report_view.png') });
+        console.log('Saved screenshot: bugfix2_mobile_report_view.png (390x844)');
 
         // 5. Mobile Report Scrolled slightly to see questions underneath
         await page.evaluate(() => window.scrollBy(0, 300));
