@@ -1,5 +1,5 @@
-require("dotenv").config({ path: require('path').join(__dirname, '..', 'Backend', '.env') });
-const mongoose = require("mongoose");
+require("../Backend/node_modules/dotenv").config({ path: require('path').join(__dirname, '..', 'Backend', '.env') });
+const mongoose = require("../Backend/node_modules/mongoose");
 const Report = require("../Backend/src/models/interviewReport.model");
 
 async function check() {
