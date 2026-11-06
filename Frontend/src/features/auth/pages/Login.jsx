@@ -20,7 +20,7 @@ const Login = () => {
     if (loading) {
         return (
             <main className="loading-screen">
-                <h1>Authenticating...</h1>
+                <h1 className="loading-title">Authenticating...</h1>
             </main>
         );
     }

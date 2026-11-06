@@ -21,7 +21,7 @@ const Register = () => {
     if (loading) {
         return (
             <main className="loading-screen">
-                <h1>Creating your account...</h1>
+                <h1 className="loading-title">Creating your account...</h1>
             </main>
         );
     }

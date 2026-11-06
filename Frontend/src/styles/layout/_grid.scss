@@ -20,7 +20,7 @@
 // ── Interview 3-Column Workspace Grid ─────────────────────────────────────────
 .interview-layout {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr) 280px;
+  grid-template-columns: 264px minmax(0, 1fr) 280px;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
@@ -32,12 +32,13 @@
   overflow: hidden;
 
   @include respond-to('xl') {
-    grid-template-columns: 220px minmax(0, 1fr) 260px;
+    grid-template-columns: 252px minmax(0, 1fr) 260px;
   }
 
   @include respond-to('lg') {
     display: flex;
     flex-direction: column;
     min-height: auto;
+    overflow: visible;
   }
 }

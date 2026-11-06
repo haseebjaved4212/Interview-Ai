@@ -49,6 +49,7 @@
 .panel__textarea {
   width: 100%;
   flex: 1;
+  min-height: 220px;
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -61,6 +62,10 @@
   box-shadow: var(--shadow-subtle);
   transition: border-color var(--duration-fast) var(--ease-smooth),
               box-shadow var(--duration-fast) var(--ease-smooth);
+
+  @include respond-to('sm') {
+    min-height: 190px;
+  }
 
   &::placeholder {
     color: var(--color-ink-muted);
