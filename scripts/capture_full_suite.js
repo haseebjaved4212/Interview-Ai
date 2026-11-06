@@ -100,14 +100,21 @@ async function run() {
 
         await page.waitForSelector('.home-page', { timeout: 15000 });
         console.log('Logged in to dashboard successfully! URL:', page.url());
+        await wait(800);
 
         // 3. Verify Bug 1: Mobile Dashboard textarea min-height & char-counter below
         console.log('Capturing Bug 1 Fix: Mobile Home Dashboard...');
-        await captureViewport(page, 'bugfix1_mobile_dashboard_textarea.png', 390, 844, true);
+        await page.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+        await page.waitForSelector('#jobDescription', { timeout: 15000 });
+        await wait(600);
+        await page.screenshot({ path: path.join(SCREENSHOTS_DIR, 'bugfix1_mobile_dashboard_textarea.png') });
+        console.log('Saved screenshot: bugfix1_mobile_dashboard_textarea.png (390x844)');
 
         // 4. Submit Strategy Generation & Capture Bug 4: Loading Screen
         console.log('Filling in job description & self description...');
-        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2 });
+        await page.setViewport({ width: 1440, height: 900, deviceScaleFactor: 2, isMobile: false, hasTouch: false });
+        await page.waitForSelector('#jobDescription', { timeout: 15000 });
+        await wait(500);
         const jobDesc = `Staff Software Engineer, Platform Infrastructure.
 Requires mastery of high-concurrency systems, distributed streaming pipelines, React architecture, and multi-region failover. Experience leading incident post-mortems and cross-functional engineering teams.`;
         const selfDesc = `Senior Systems Engineer with 8 years building distributed data ingestion pipelines, cloud-native services, and real-time dashboard interfaces. Deep knowledge of microservices and state management.`;
