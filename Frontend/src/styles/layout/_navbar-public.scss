@@ -1,0 +1,251 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: LAYOUT - PUBLIC NAVBAR
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.public-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: var(--color-canvas);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-normal) var(--ease-smooth),
+              background-color var(--duration-normal) var(--ease-smooth),
+              box-shadow var(--duration-normal) var(--ease-smooth);
+
+  &--scrolled {
+    background-color: rgba(246, 242, 234, 0.94);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--color-border-hairline);
+    box-shadow: 0 2px 10px rgba(28, 26, 23, 0.03);
+  }
+}
+
+.public-nav {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+
+  @include respond-to('md') {
+    padding: var(--space-3) var(--space-4);
+  }
+
+  // ── Wordmark & Craft Mark ──
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--color-ink);
+
+    &:focus-visible {
+      @include focus-ring;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  &__mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-cobalt);
+    transition: transform var(--duration-fast) var(--ease-smooth);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+  }
+
+  &__brand:hover &__mark {
+    transform: rotate(6deg);
+  }
+
+  &__wordmark {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: var(--track-tight);
+    color: var(--color-ink);
+  }
+
+  // ── Center Anchor Links ──
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-family: var(--font-ui);
+    font-size: var(--text-sub);
+    font-weight: 500;
+    color: var(--color-ink-secondary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-smooth);
+
+    &:hover {
+      color: var(--color-ink);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+      border-radius: var(--radius-sm);
+    }
+  }
+
+  // ── Right Action Buttons ──
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  &__btn {
+    padding: 0.55rem 1.15rem;
+    font-size: var(--text-sub);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  // ── Mobile Hamburger Toggle ──
+  &__toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    @include respond-to('md') {
+      display: flex;
+    }
+  }
+
+  &__toggle-bar {
+    position: relative;
+    width: 18px;
+    height: 2px;
+    background-color: var(--color-ink);
+    transition: background-color var(--duration-fast) var(--ease-smooth);
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 18px;
+      height: 2px;
+      background-color: var(--color-ink);
+      transition: transform var(--duration-fast) var(--ease-smooth),
+                  top var(--duration-fast) var(--ease-smooth);
+    }
+
+    &::before {
+      top: -6px;
+    }
+
+    &::after {
+      top: 6px;
+    }
+
+    &--open {
+      background-color: transparent;
+
+      &::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  // ── Mobile Collapsed Menu Drawer ──
+  &__mobile-menu {
+    display: none;
+
+    @include respond-to('md') {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 var(--space-4);
+      background-color: var(--color-canvas);
+      border-bottom: 1px solid transparent;
+      transition: max-height var(--duration-normal) var(--ease-smooth),
+                  padding var(--duration-normal) var(--ease-smooth),
+                  border-color var(--duration-normal) var(--ease-smooth);
+
+      &--open {
+        max-height: 260px;
+        padding-top: var(--space-2);
+        padding-bottom: var(--space-4);
+        border-bottom-color: var(--color-border-hairline);
+      }
+    }
+  }
+
+  &__mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  &__mobile-link {
+    font-size: var(--text-body);
+    font-weight: 500;
+    color: var(--color-ink);
+    text-decoration: none;
+    padding: var(--space-2) 0;
+
+    &:hover {
+      color: var(--color-cobalt);
+    }
+  }
+
+  &__mobile-actions {
+    display: flex;
+    gap: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-border-hairline);
+  }
+
+  &__mobile-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.65rem 0.75rem;
+    font-size: var(--text-sub);
+    text-align: center;
+    text-decoration: none;
+  }
+}

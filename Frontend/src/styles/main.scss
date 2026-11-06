@@ -9,10 +9,11 @@
 @use './base/reset';
 @use './base/base';
 
-// 3. Layout (Split Auth Grid, 3-Column Workspace, Sticky Nav, Right Rail)
+// 3. Layout (Split Auth Grid, 3-Column Workspace, Sticky Nav, Right Rail, Public Nav, Footer)
 @use './layout/grid';
 @use './layout/navigation';
 @use './layout/rail';
+@use './layout/navbar-public';
 
 // 4. Components (Buttons, Inputs, Cards, Badges, Match Score Hero, Loader)
 @use './components/buttons';
@@ -22,7 +23,8 @@
 @use './components/score';
 @use './components/loader';
 
-// 5. Pages (Auth Split, Home Workspace, Interview Report View)
+// 5. Pages (Auth Split, Home Workspace, Interview Report View, Landing)
 @use './pages/auth';
 @use './pages/home';
 @use './pages/interview';
+@use './pages/landing';

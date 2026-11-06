@@ -1,0 +1,24 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// LIGHT EDITORIAL STUDIO: PAGES - PUBLIC LANDING PAGE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+@use '../abstracts' as *;
+
+.landing-page {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.landing-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+
+  @include respond-to('md') {
+    padding: 0 var(--space-4);
+  }
+}
