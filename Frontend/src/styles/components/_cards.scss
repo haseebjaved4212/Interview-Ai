@@ -93,12 +93,12 @@
   }
 
   &--left {
-    position: relative;
+    display: flex;
+    flex-direction: column;
 
     .char-counter {
-      position: absolute;
-      bottom: var(--space-10);
-      right: calc(var(--space-6) + var(--space-3));
+      align-self: flex-end;
+      margin-top: var(--space-2);
       pointer-events: none;
     }
   }
