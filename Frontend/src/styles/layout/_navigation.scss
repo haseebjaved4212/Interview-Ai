@@ -143,7 +143,13 @@
     padding: 0.65rem 1rem;
 
     @include respond-to('lg') {
-      display: none;
+      width: auto;
+      margin-top: 0;
+      padding: 0.35rem 0.75rem;
+      font-size: var(--text-meta);
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
     }
 
     .resume-btn-icon {

@@ -13,17 +13,20 @@
   border-left: 1px solid var(--color-border-hairline);
 
   @include respond-to('lg') {
+    order: 2;
     border-left: none;
-    border-top: 1px solid var(--color-border-hairline);
-    padding: var(--space-5) var(--space-4);
+    border-bottom: 1px solid var(--color-border-hairline);
+    padding: var(--space-4);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 1fr;
     gap: var(--space-4);
+    align-items: center;
   }
 
   @include respond-to('sm') {
     display: flex;
     flex-direction: column;
+    gap: var(--space-3);
   }
 }
 

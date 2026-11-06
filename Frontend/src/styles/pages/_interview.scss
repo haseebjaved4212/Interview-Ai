@@ -33,9 +33,14 @@
   background-color: var(--color-card);
 
   @include respond-to('lg') {
+    order: 3;
     max-height: none;
+    height: auto;
     overflow-y: visible;
     padding: var(--space-5) var(--space-4);
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   section {
