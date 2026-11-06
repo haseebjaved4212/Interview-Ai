@@ -15,7 +15,7 @@
   padding: var(--space-8);
   background-color: var(--color-canvas);
   text-align: center;
-  animation: fadeIn var(--duration-normal) var(--ease-smooth);
+  opacity: 1;
 
   h1 {
     font-family: var(--font-display);
@@ -32,8 +32,10 @@
   color: var(--color-cobalt);
   background-color: var(--color-cobalt-wash);
   border: 1px solid var(--color-cobalt-border);
-  padding: 0.3rem 0.85rem;
+  padding: 0.35rem 0.95rem;
   border-radius: var(--radius-pill);
+  font-weight: 600;
+  opacity: 1;
 }
 
 .loading-title {
@@ -46,15 +48,17 @@
   line-height: var(--leading-tight);
   margin: 0;
   min-height: 2.8rem;
-  animation: pulseGently 2.4s ease-in-out infinite;
+  opacity: 1;
 }
 
 .loading-sub {
   font-size: var(--text-lead);
   color: var(--color-ink-secondary);
+  font-weight: 500;
   max-width: 480px;
   line-height: var(--leading-body);
   margin: 0;
+  opacity: 1;
 }
 
 // ── Refined Hairline Progress Track ───────────────────────────────────────────
@@ -93,18 +97,20 @@
 .loading-stage-dot {
   font-family: var(--font-mono);
   font-size: var(--text-meta);
-  color: var(--color-ink-muted);
-  padding: 0.2rem 0.6rem;
+  color: var(--color-ink-secondary);
+  font-weight: 500;
+  padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border-hairline);
-  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  opacity: 1;
   transition: all var(--duration-normal) var(--ease-smooth);
 
   &--active {
     color: var(--color-cobalt);
     background-color: var(--color-cobalt-wash);
-    border-color: var(--color-cobalt-border);
-    font-weight: 600;
+    border-color: var(--color-cobalt);
+    font-weight: 700;
   }
 
   &--done {
