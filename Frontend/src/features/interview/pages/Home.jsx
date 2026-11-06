@@ -106,7 +106,7 @@ const Home = () => {
                     </span>
                 </div>
                 <button
-                    onClick={handleLogout}
+                    onClick={onLogout}
                     className='button secondary-button home-topbar__logout'
                 >
                     Logout
