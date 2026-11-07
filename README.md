@@ -25,24 +25,26 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Visual Showcase: Light Editorial Studio](#visual-showcase-light-editorial-studio)
-  - [1. Landing Page Experience](#1-landing-page-experience)
-  - [2. Asymmetric Authentication Split](#2-asymmetric-authentication-split)
-  - [3. Workspace & Multi-Stage Generation](#3-workspace--multi-stage-generation)
-  - [4. Interview Strategy Intelligence (3-Column Report)](#4-interview-strategy-intelligence-3-column-report)
-  - [5. Saved Reports History](#5-saved-reports-history)
-- [System Architecture](#system-architecture)
-- [Full-Stack Technologies](#full-stack-technologies)
-- [SCSS Architecture (7-1 Pattern)](#scss-architecture-7-1-pattern)
-- [API Reference](#api-reference)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [1. Environment Setup](#1-environment-setup)
-  - [2. Installation & Running](#2-installation--running)
-  - [3. Running Tests and Production Builds](#3-running-tests-and-production-builds)
-- [License](#license)
+- [HireCraft: Targeted Interview Intelligence \& Career Strategy Platform](#hirecraft-targeted-interview-intelligence--career-strategy-platform)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Key Features](#key-features)
+  - [System Architecture](#system-architecture)
+  - [Full-Stack Technologies](#full-stack-technologies)
+  - [SCSS Architecture (7-1 Pattern)](#scss-architecture-7-1-pattern)
+  - [API Reference](#api-reference)
+    - [Authentication Endpoints (`/api/auth`)](#authentication-endpoints-apiauth)
+    - [Interview Intelligence Endpoints (`/api/interview`)](#interview-intelligence-endpoints-apiinterview)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [1. Environment Setup](#1-environment-setup)
+    - [2. Installation \& Running](#2-installation--running)
+      - [Start Backend](#start-backend)
+      - [Start Frontend](#start-frontend)
+    - [3. Running Tests and Production Builds](#3-running-tests-and-production-builds)
+      - [Backend Test Suite](#backend-test-suite)
+      - [Frontend Production Build](#frontend-production-build)
+  - [License](#license)
 
 ---
 
@@ -68,80 +70,6 @@
 
 ---
 
-## Visual Showcase: Light Editorial Studio
-
-> 🎨 **Looking for an extensive visual walkthrough?** Explore our dedicated [**UI Showcase (UI-SHOWCASE.md)**](UI-SHOWCASE.md) featuring full-resolution desktop and mobile side-by-side walkthroughs, micro-interaction states, component breakdowns, and design evolution comparisons.
-
-Designed with a calm, tactile, publication-grade **Light Editorial Studio** aesthetic. Built upon warm paper surfaces (`#F6F2EA`), crisp ink typography, Fraunces display serif, Manrope interface grotesk, and focused cobalt (`#2D3FE0`) actions.
-
-### 1. Landing Page Experience
-
-| Desktop View (1440×900) | Mobile View (390×844) |
-| :---: | :---: |
-| ![Landing Page Desktop](docs/screenshots/final_landing_desktop.png) | ![Landing Page Mobile](docs/screenshots/final_landing_mobile.png) |
-| *Publication-grade landing hero with dynamic live preview card, sticky navigation, and clear value proposition.* | *Fluid mobile navigation menu, single-column workflow stack, and accessible touch targets.* |
-
----
-
-### 2. Asymmetric Authentication Split
-
-| User Registration (Desktop) | User Registration (Mobile) |
-| :---: | :---: |
-| ![User Registration Desktop](docs/screenshots/01_desktop_register.png) | ![User Registration Mobile](docs/screenshots/01_mobile_register.png) |
-| *Editorial brand statement panel alongside responsive form controls with visible focus states and WCAG AA contrast.* | *Fluid single-column stack with generous touch targets and tactile hairline dividers.* |
-
-| User Login (Desktop) | User Login (Mobile) |
-| :---: | :---: |
-| ![User Login Desktop](docs/screenshots/02_desktop_login.png) | ![User Login Mobile](docs/screenshots/02_mobile_login.png) |
-| *Tactile paper card surface with warm terracotta error alerts and custom focus rings.* | *Clean mobile form view with instant link to registration.* |
-
----
-
-### 3. Workspace & Multi-Stage Generation
-
-| Clean Workspace Hero | Form Inputs Filled |
-| :---: | :---: |
-| ![Workspace Desktop](docs/screenshots/03_desktop_home.png) | ![Workspace Filled](docs/screenshots/04_desktop_home_filled.png) |
-| *Fraunces display typography, tactile resume dropzone with hover and success states, and live character counter.* | *Focused textarea inputs with cobalt glow-free focus borders and focal generation CTA button.* |
-
-#### Multi-Stage Generation State (No Generic Spinner)
-<p align="center">
-  <img src="docs/screenshots/05_desktop_loading_stage.png" alt="Generation Loader" width="85%" />
-</p>
-<p align="center"><em>Real-time rotating progress stages ("Reading the job description", "Mapping your profile", "Drafting questions", "Calibrating preparation roadmap") with hairline sweep animation.</em></p>
-
----
-
-### 4. Interview Strategy Intelligence (3-Column Report)
-
-#### Technical Questions Intelligence
-| Desktop View (1440×900) | Mobile View (390×844) |
-| :---: | :---: |
-| ![Technical Questions Desktop](docs/screenshots/06_desktop_report_technical.png) | ![Technical Questions Mobile](docs/screenshots/06_mobile_report_technical.png) |
-| *Collapsible accordion cards with typographic numbering (Q1, Q2), interviewer intention rationale, and model answers.* | *Sticky navigation bar with horizontal section tabs and responsive content stack.* |
-
-#### Behavioral Questions and Preparation Roadmap
-| Behavioral Questions Intelligence | Structured 5-Day Roadmap Timeline |
-| :---: | :---: |
-| ![Behavioral Questions Desktop](docs/screenshots/07_desktop_report_behavioral.png) | ![Roadmap Timeline Desktop](docs/screenshots/08_desktop_report_roadmap.png) |
-| *STAR-method behavioral inquiries tailored to leadership signals and real-world system resilience.* | *Refined timeline with hairline rules, delicate ring nodes, and day-by-day actionable syllabus.* |
-
-#### Match Score and Skill Gaps Hero Moment
-<p align="center">
-  <img src="docs/screenshots/09_sidebar_score_gaps.png" alt="Sidebar Close-up" width="60%" />
-</p>
-<p align="center"><em>Hero match score moment with large Fraunces numerals, refined circular arc, and ranked skill gap cards categorized by semantic severity.</em></p>
-
----
-
-### 5. Saved Reports History
-
-<p align="center">
-  <img src="docs/screenshots/10_desktop_home_recent_reports.png" alt="Recent Reports Grid" width="85%" />
-</p>
-<p align="center"><em>Persistent historical grid allowing candidates to review and download previous custom interview strategies anytime.</em></p>
-
----
 
 ## System Architecture
 
