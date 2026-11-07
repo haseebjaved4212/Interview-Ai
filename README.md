@@ -1,6 +1,69 @@
-# Interview AI: Career Preparation and Strategy Platform
+<div align="center">
+  <img src="readme-assets/HireCraft-Banner-Image.jfif" alt="HireCraft-Banner-Image" width="100%" />
+</div>
+
+<div align="center">
+
+# HireCraft: Targeted Interview Intelligence & Career Strategy Platform
 
 > An intelligent, AI-driven career acceleration platform that evaluates candidate resumes against target job descriptions, produces role-specific technical and behavioral interview preparation roadmaps, calculates candidate-role match scores, identifies skill gaps, and compiles customized ATS-friendly PDF resumes.
+
+[![React 19](https://img.shields.io/badge/React-19.x-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![Vite 8](https://img.shields.io/badge/Vite-8.x-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-20+-339933?style=flat-square&logo=node.js&logoColor=white)](https://nodejs.org/)
+[![Express 5](https://img.shields.io/badge/Express-5.x-000000?style=flat-square&logo=express&logoColor=white)](https://expressjs.com/)
+[![Google Gemini AI](https://img.shields.io/badge/Google_Gemini-3_Flash-4285F4?style=flat-square&logo=google&logoColor=white)](https://ai.google.dev/)
+[![MongoDB Atlas](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
+[![Puppeteer](https://img.shields.io/badge/Puppeteer-PDF_Engine-00D8A2?style=flat-square&logo=puppeteer&logoColor=black)](https://pptr.dev/)
+[![SCSS 7-1](https://img.shields.io/badge/Sass-7--1_Pattern-CC6699?style=flat-square&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Visual Showcase: Light Editorial Studio](#visual-showcase-light-editorial-studio)
+  - [1. Landing Page Experience](#1-landing-page-experience)
+  - [2. Asymmetric Authentication Split](#2-asymmetric-authentication-split)
+  - [3. Workspace & Multi-Stage Generation](#3-workspace--multi-stage-generation)
+  - [4. Interview Strategy Intelligence (3-Column Report)](#4-interview-strategy-intelligence-3-column-report)
+  - [5. Saved Reports History](#5-saved-reports-history)
+- [System Architecture](#system-architecture)
+- [Full-Stack Technologies](#full-stack-technologies)
+- [SCSS Architecture (7-1 Pattern)](#scss-architecture-7-1-pattern)
+- [API Reference](#api-reference)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [1. Environment Setup](#1-environment-setup)
+  - [2. Installation & Running](#2-installation--running)
+  - [3. Running Tests and Production Builds](#3-running-tests-and-production-builds)
+- [License](#license)
+
+---
+
+## Overview
+
+**HireCraft** transforms the interview preparation journey by replacing generic question lists with tailored role intelligence. By parsing candidate resumes in-memory against specific job descriptions, HireCraft applies structured AI analysis via Google Gemini to generate:
+- **Calibrated Technical Questions**: With interviewer rationale and comprehensive model answers.
+- **STAR-Method Behavioral Scenarios**: Focusing on real-world system resilience and leadership signals.
+- **5-Day Actionable Preparation Syllabus**: Breaking down topics from core architecture to simulation.
+- **Candidate-Job Match Percentage & Ranked Skill Gaps**: Visualizing role readiness with semantic gap categorization.
+- **ATS-Optimized PDF Resume Generator**: Compiling tailored resumes formatted cleanly for automated screening and human recruiters.
+
+---
+
+## Key Features
+
+- **In-Memory Resume Ingestion**: Secure 3MB capped PDF parsing with zero disk residue using `pdf-parse` and Multer memory storage.
+- **Multi-Model Google Gemini Fallback Engine**: Native OpenAPI Type schema enforcement with automated fallback between `gemini-3-flash-preview` and `gemini-flash-lite-latest`.
+- **Non-Generic Multi-Stage Generation State**: Eliminates generic spinners in favor of rotating progress stages ("Reading job description", "Mapping profile", "Drafting questions", "Calibrating preparation roadmap") with hairline sweep animations.
+- **Light Editorial Studio Aesthetic**: Warm tactile paper canvas (`#F6F2EA`), crisp ink typography, Fraunces serif display, Manrope interface grotesk, and focused cobalt (`#2D3FE0`) actions.
+- **Server-Side Headless PDF Engine**: Puppeteer-driven rendering of ATS-friendly A4 PDF resumes with exact typography and page-break controls.
+- **Strict JWT Token Blacklisting**: Secure authentication with 24-hour TTL MongoDB index for invalidated session tokens upon logout.
 
 ---
 
@@ -8,9 +71,18 @@
 
 Designed with a calm, tactile, publication-grade **Light Editorial Studio** aesthetic. Built upon warm paper surfaces (`#F6F2EA`), crisp ink typography, Fraunces display serif, Manrope interface grotesk, and focused cobalt (`#2D3FE0`) actions.
 
-### 1. Asymmetric Authentication Split
+### 1. Landing Page Experience
 
 | Desktop View (1440×900) | Mobile View (390×844) |
+| :---: | :---: |
+| ![Landing Page Desktop](docs/screenshots/final_landing_desktop.png) | ![Landing Page Mobile](docs/screenshots/final_landing_mobile.png) |
+| *Publication-grade landing hero with dynamic live preview card, sticky navigation, and clear value proposition.* | *Fluid mobile navigation menu, single-column workflow stack, and accessible touch targets.* |
+
+---
+
+### 2. Asymmetric Authentication Split
+
+| User Registration (Desktop) | User Registration (Mobile) |
 | :---: | :---: |
 | ![User Registration Desktop](docs/screenshots/01_desktop_register.png) | ![User Registration Mobile](docs/screenshots/01_mobile_register.png) |
 | *Editorial brand statement panel alongside responsive form controls with visible focus states and WCAG AA contrast.* | *Fluid single-column stack with generous touch targets and tactile hairline dividers.* |
@@ -22,7 +94,7 @@ Designed with a calm, tactile, publication-grade **Light Editorial Studio** aest
 
 ---
 
-### 2. Considered Workspace and Multi-Stage Generation
+### 3. Workspace & Multi-Stage Generation
 
 | Clean Workspace Hero | Form Inputs Filled |
 | :---: | :---: |
@@ -30,12 +102,14 @@ Designed with a calm, tactile, publication-grade **Light Editorial Studio** aest
 | *Fraunces display typography, tactile resume dropzone with hover and success states, and live character counter.* | *Focused textarea inputs with cobalt glow-free focus borders and focal generation CTA button.* |
 
 #### Multi-Stage Generation State (No Generic Spinner)
-![Generation Loader](docs/screenshots/05_desktop_loading_stage.png)
-*Real-time rotating progress stages ("Reading the job description", "Mapping your profile", "Drafting questions", "Calibrating preparation roadmap") with hairline sweep animation.*
+<p align="center">
+  <img src="docs/screenshots/05_desktop_loading_stage.png" alt="Generation Loader" width="85%" />
+</p>
+<p align="center"><em>Real-time rotating progress stages ("Reading the job description", "Mapping your profile", "Drafting questions", "Calibrating preparation roadmap") with hairline sweep animation.</em></p>
 
 ---
 
-### 3. Interview Strategy Intelligence: 3-Column Report View
+### 4. Interview Strategy Intelligence (3-Column Report)
 
 #### Technical Questions Intelligence
 | Desktop View (1440×900) | Mobile View (390×844) |
@@ -50,18 +124,23 @@ Designed with a calm, tactile, publication-grade **Light Editorial Studio** aest
 | *STAR-method behavioral inquiries tailored to leadership signals and real-world system resilience.* | *Refined timeline with hairline rules, delicate ring nodes, and day-by-day actionable syllabus.* |
 
 #### Match Score and Skill Gaps Hero Moment
-![Sidebar Close-up](docs/screenshots/09_sidebar_score_gaps.png)
-*Hero match score moment with large Fraunces numerals, refined circular arc, and ranked skill gap cards categorized by semantic severity.*
+<p align="center">
+  <img src="docs/screenshots/09_sidebar_score_gaps.png" alt="Sidebar Close-up" width="60%" />
+</p>
+<p align="center"><em>Hero match score moment with large Fraunces numerals, refined circular arc, and ranked skill gap cards categorized by semantic severity.</em></p>
 
 ---
 
-### 4. Saved Reports History
-![Recent Reports Grid](docs/screenshots/10_desktop_home_recent_reports.png)
-*Persistent historical grid allowing candidates to review previous custom interview strategies anytime.*
+### 5. Saved Reports History
+
+<p align="center">
+  <img src="docs/screenshots/10_desktop_home_recent_reports.png" alt="Recent Reports Grid" width="85%" />
+</p>
+<p align="center"><em>Persistent historical grid allowing candidates to review and download previous custom interview strategies anytime.</em></p>
 
 ---
 
-## Architecture and Tech Stack
+## System Architecture
 
 ```mermaid
 flowchart TD
@@ -100,11 +179,13 @@ flowchart TD
     PuppeteerEngine -->|A4 ATS PDF Blob| Client
 ```
 
-### Full-Stack Technologies
+---
+
+## Full-Stack Technologies
 
 | Layer | Technology | Details |
 | :--- | :--- | :--- |
-| **Frontend** | React 19, React Router 8, Vite 8, Sass (SCSS) | Light Editorial Studio aesthetic, 7-1 SCSS architecture, zero inline styles, fluid clamp type scale |
+| **Frontend** | React 19, React Router 7, Vite 8, Sass (SCSS) | Light Editorial Studio aesthetic, 7-1 SCSS architecture, zero inline styles, fluid clamp type scale |
 | **Backend** | Node.js 20+, Express 5, Mongoose 9 | RESTful API, in-memory PDF parsing, JWT authentication with token blacklist |
 | **AI Engine** | Google GenAI SDK (`@google/genai`) | Native OpenAPI Type schema enforcement with automated multi-model fallback |
 | **PDF Generation** | Puppeteer and Headless Chrome | Server-side compilation of semantic HTML into ATS-friendly A4 PDF resumes |
@@ -113,6 +194,8 @@ flowchart TD
 ---
 
 ## SCSS Architecture (7-1 Pattern)
+
+The stylesheet structure strictly complies with the classic 7-1 pattern without CSS modules or utility frameworks:
 
 ```
 Frontend/src/styles/
@@ -129,7 +212,7 @@ Frontend/src/styles/
 │   └── _base.scss           # Paper canvas, selection, custom scrollbar styling
 ├── layout/
 │   ├── _grid.scss           # Asymmetric split auth, 3-column workspace grid
-│   ├── _navigation.scss     # Sticky left rail, section pills, dashboard back button
+│   ├── _navigation.scss     # Sticky navigation, header pills, dashboard return
 │   └── _rail.scss           # Right rail: score arc and skill gaps container
 ├── components/
 │   ├── _buttons.scss        # Primary cobalt button, secondary tactile outline button
@@ -141,16 +224,39 @@ Frontend/src/styles/
 └── pages/
     ├── _auth.scss           # Login and Register asymmetric split styling
     ├── _home.scss           # Workspace hero, dual-panel inputs, history grid
+    ├── _landing.scss        # Landing hero, workflow, feature cards, and footer
     └── _interview.scss      # Questions, roadmap timeline, report layout
 ```
+
+---
+
+## API Reference
+
+### Authentication Endpoints (`/api/auth`)
+
+| Method | Endpoint | Description | Request Body |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/auth/register` | Register new user account | `{ username, email, password }` |
+| `POST` | `/api/auth/login` | Authenticate existing user | `{ email, password }` |
+| `GET` | `/api/auth/logout` | Invalidate token and blacklist | *(Bearer Token)* |
+| `GET` | `/api/auth/get-me` | Retrieve authenticated user profile | *(Bearer Token)* |
+
+### Interview Intelligence Endpoints (`/api/interview`)
+
+| Method | Endpoint | Description | Request Format |
+| :--- | :--- | :--- | :--- |
+| `POST` | `/api/interview/generate` | Generate interview report & roadmap | `multipart/form-data` (`resume` PDF, `jobDescription`) |
+| `GET` | `/api/interview/history` | Retrieve user's historical reports | *(Bearer Token)* |
+| `GET` | `/api/interview/:id` | Fetch specific report details | *(Bearer Token)* |
+| `POST` | `/api/interview/generate-pdf`| Compile ATS-friendly A4 resume PDF | `{ reportId }` |
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- **Node.js** >= 18.x installed
-- **MongoDB** instance running locally or on MongoDB Atlas
+- **Node.js** >= 18.x installed (Node.js 20+ recommended)
+- **MongoDB** instance running locally or on [MongoDB Atlas](https://www.mongodb.com/atlas)
 - **Google Gemini API Key** from [Google AI Studio](https://aistudio.google.com/)
 
 ---
@@ -167,7 +273,7 @@ GOOGLE_GENAI_API_KEY=your_google_gemini_api_key_here
 
 ---
 
-### 2. Installation and Running
+### 2. Installation & Running
 
 #### Start Backend
 ```bash
@@ -187,7 +293,7 @@ npm run dev
 
 ---
 
-### 3. Running Automated Tests and Builds
+### 3. Running Tests and Production Builds
 
 #### Backend Test Suite
 ```bash
@@ -205,4 +311,4 @@ npm run build --prefix Frontend
 
 ## License
 
-Distributed under the MIT License.
+Distributed under the MIT License. See `LICENSE` for more information.
