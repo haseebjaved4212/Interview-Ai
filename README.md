@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="readme-assets/HireCraft-Banner-Image.jfif" alt="HireCraft-Banner-Image" width="100%" />
+  <img src="docs/readme-assets/HireCraft-Banner-Image.png" alt="HireCraft-Banner-Image" width="100%" />
 </div>
 
 <div align="center">
