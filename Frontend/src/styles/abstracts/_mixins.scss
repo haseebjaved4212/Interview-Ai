@@ -35,17 +35,17 @@
 }
 
 // ── Paper Card Surface ────────────────────────────────────────────────────────
+// Single treatment: fill or border, no shadows on static cards
 @mixin paper-card {
-  background-color: var(--color-card);
+  background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  transition: border-color var(--duration-fast) var(--ease-smooth),
-              box-shadow var(--duration-fast) var(--ease-smooth);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  transition: border-color var(--duration-fast) var(--ease-smooth);
 }
 
 // ── Tactile Paper Grain Texture Overlay ───────────────────────────────────────
-// Ultra subtle SVG noise grain that adds tangible print quality without reducing contrast
+// Perceptible 3.5% paper grain for authentic tactile print quality
 @mixin paper-grain {
   position: relative;
 
@@ -58,7 +58,7 @@
     height: 100vh;
     pointer-events: none;
     z-index: 9999;
-    opacity: 0.022;
+    opacity: 0.035;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     background-repeat: repeat;
   }

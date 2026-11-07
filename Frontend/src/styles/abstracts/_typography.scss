@@ -19,28 +19,28 @@ $weight-bold:      700;
   --font-ui: #{$font-ui};
   --font-mono: #{$font-mono};
 
-  // Fluid Display Headlines (Tight tracking, optical serif impact)
-  --text-hero: clamp(2.35rem, 4vw + 1rem, 3.85rem);
-  --text-h1:   clamp(1.75rem, 2.5vw + 0.5rem, 2.65rem);
+  // Fluid Display Headlines (Loosened tracking per guidelines, capped at 3.5rem)
+  --text-hero: clamp(2.25rem, 4vw, 3.5rem);
+  --text-h1:   clamp(1.75rem, 2.5vw + 0.5rem, 2.5rem);
   --text-h2:   clamp(1.25rem, 1.5vw + 0.5rem, 1.85rem);
   --text-h3:   clamp(1.05rem, 1vw + 0.4rem, 1.35rem);
 
   // Body & Reading Text (Generous line height for magazine readability)
   --text-lead: 1.0625rem;  // 17px, line-height 1.6
-  --text-body: 0.9375rem;  // 15px, line-height 1.62
+  --text-body: 0.9375rem;  // 15px, line-height 1.6
   --text-sub:  0.84375rem; // 13.5px, line-height 1.5
   --text-meta: 0.75rem;    // 12px, line-height 1.4
 
-  // Letter Spacing Tiers
-  --track-tight: -0.03em;
-  --track-snug:  -0.015em;
+  // Letter Spacing Tiers (Loosened tracking: no tighter than -0.01em)
+  --track-tight: -0.01em;
+  --track-snug:  -0.005em;
   --track-normal: 0em;
   --track-wide:   0.04em;
   --track-caps:   0.08em;
 
-  // Leading Tiers
-  --leading-tight: 1.15;
-  --leading-snug:  1.3;
+  // Leading Tiers (Display line-height 1.1, body 1.6)
+  --leading-tight: 1.1;
+  --leading-snug:  1.25;
   --leading-body:  1.6;
   --leading-loose: 1.75;
 }

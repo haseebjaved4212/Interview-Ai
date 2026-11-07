@@ -27,59 +27,66 @@ const Login = () => {
 
     return (
         <main className="auth-page">
-            <div className="auth-layout">
-                <aside className="auth-editorial-panel">
-                    <div className="auth-editorial-panel__tag">Interview AI Studio</div>
-                    <h2 className="auth-editorial-panel__quote">
-                        A considered method for your technical career.
-                    </h2>
-                    <p className="auth-editorial-panel__description">
-                        Curated inquiries, structural intent, model solutions, and day by day milestones tailored precisely to your profile.
-                    </p>
-                    <div className="auth-editorial-panel__footer">
-                        <span>Edition 2026</span>
-                        <span className="auth-editorial-panel__dot">&bull;</span>
-                        <span>Candidate Workspace</span>
+            <div className="auth-split">
+                <aside className="auth-panel">
+                    <Link to="/" className="auth-wordmark">HireCraft</Link>
+                    <div className="auth-panel__content">
+                        <h2 className="auth-panel__statement">
+                            Prepare for the job you want, not a generic one.
+                        </h2>
+                        <p className="auth-panel__sub">
+                            Paste a job description, add your profile, get a plan built around the gap.
+                        </p>
                     </div>
                 </aside>
 
-                <div className="form-container">
-                    <h1>Login</h1>
+                <div className="auth-form-wrapper">
+                    <div className="form-container">
+                        <header className="form-header">
+                            <h1 className="form-title">Welcome back</h1>
+                            <p className="form-sub">Pick up where you left off.</p>
+                        </header>
 
-                    {authError && (
-                        <div className="form-error-alert" role="alert">
-                            {authError}
-                        </div>
-                    )}
+                        {authError && (
+                            <div className="form-error-alert" role="alert">
+                                {authError}
+                            </div>
+                        )}
 
-                    <form onSubmit={handleSubmit}>
-                        <div className="input-group">
-                            <label htmlFor="email">Email</label>
-                            <input
-                                value={email}
-                                onChange={(e) => { setEmail(e.target.value); }}
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="Enter email address"
-                                required
-                            />
-                        </div>
-                        <div className="input-group">
-                            <label htmlFor="password">Password</label>
-                            <input
-                                value={password}
-                                onChange={(e) => { setPassword(e.target.value); }}
-                                type="password"
-                                id="password"
-                                name="password"
-                                placeholder="Enter password"
-                                required
-                            />
-                        </div>
-                        <button className="button primary-button">Login</button>
-                    </form>
-                    <p>Don't have an account? <Link to="/register">Register</Link></p>
+                        <form onSubmit={handleSubmit} className="auth-form">
+                            <div className="input-group">
+                                <label htmlFor="email">Email</label>
+                                <input
+                                    value={email}
+                                    onChange={(e) => { setEmail(e.target.value); }}
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter email address"
+                                    required
+                                    autoComplete="email"
+                                />
+                            </div>
+                            <div className="input-group">
+                                <label htmlFor="password">Password</label>
+                                <input
+                                    value={password}
+                                    onChange={(e) => { setPassword(e.target.value); }}
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Enter password"
+                                    required
+                                    autoComplete="current-password"
+                                />
+                            </div>
+                            <button className="button primary-button auth-submit">Login</button>
+                        </form>
+
+                        <p className="auth-switch">
+                            Don't have an account? <Link to="/register">Create account</Link>
+                        </p>
+                    </div>
                 </div>
             </div>
         </main>

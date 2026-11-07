@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════════════════════════
-// LIGHT EDITORIAL STUDIO: COMPONENTS - MULTI-STAGE GENERATION LOADER
+// LIGHT EDITORIAL STUDIO: COMPONENTS - MULTI-STAGE GENERATION LOADER (DE-SLOPPED)
 // ═══════════════════════════════════════════════════════════════════════════════
 
 @use '../abstracts' as *;
@@ -11,111 +11,118 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: var(--space-5);
   padding: var(--space-8);
   background-color: var(--color-canvas);
-  text-align: center;
-  opacity: 1;
+  box-sizing: border-box;
+}
 
-  h1 {
+.loading-column {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  text-align: left;
+}
+
+.loading-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+
+  .loading-title {
     font-family: var(--font-display);
-    font-size: var(--text-h1);
-    font-weight: 700;
+    font-size: var(--text-h2);
+    font-weight: 600;
     color: var(--color-ink);
     letter-spacing: var(--track-tight);
-    opacity: 1;
+    line-height: var(--leading-tight);
+    margin: 0;
+  }
+
+  .loading-sub {
+    font-size: var(--text-sub);
+    color: var(--color-ink-muted);
+    line-height: var(--leading-snug);
+    margin: 0;
   }
 }
 
-.loading-badge {
-  @include mono-stamp;
-  color: var(--color-cobalt);
-  background-color: var(--color-cobalt-wash);
-  border: 1px solid var(--color-cobalt-border);
-  padding: 0.35rem 0.95rem;
-  border-radius: var(--radius-pill);
-  font-weight: 600;
-  opacity: 1;
-}
-
-.loading-title {
-  font-family: var(--font-display);
-  font-size: var(--text-h1);
-  font-weight: 700;
-  color: var(--color-ink);
-  letter-spacing: var(--track-tight);
-  max-width: 620px;
-  line-height: var(--leading-tight);
-  margin: 0;
-  min-height: 2.8rem;
-  opacity: 1;
-}
-
-.loading-sub {
-  font-size: var(--text-lead);
-  color: var(--color-ink-secondary);
-  font-weight: 500;
-  max-width: 480px;
-  line-height: var(--leading-body);
-  margin: 0;
-  opacity: 1;
-}
-
-// ── Refined Hairline Progress Track ───────────────────────────────────────────
-.loading-meter {
-  width: 280px;
-  height: 2px;
-  background-color: var(--color-border);
-  border-radius: var(--radius-pill);
-  position: relative;
-  overflow: hidden;
-  margin: var(--space-3) 0;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 35%;
-    height: 100%;
-    background-color: var(--color-cobalt);
-    border-radius: var(--radius-pill);
-    animation: progressSweep 2s var(--ease-smooth) infinite;
-  }
-}
-
-// ── Multi-stage Stepper Indicator ─────────────────────────────────────────────
-.loading-stages {
+// ── Vertical Stage List with Markers (Check, Pulse, Pending Dot) ─────────────
+.loading-stage-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-3);
-  max-width: 640px;
-  margin-top: var(--space-2);
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
-.loading-stage-dot {
-  font-family: var(--font-mono);
-  font-size: var(--text-meta);
-  color: var(--color-ink-secondary);
-  font-weight: 500;
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-card);
-  opacity: 1;
-  transition: all var(--duration-normal) var(--ease-smooth);
+.loading-stage-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  transition: color var(--duration-fast) var(--ease-smooth);
 
   &--active {
-    color: var(--color-cobalt);
-    background-color: var(--color-cobalt-wash);
-    border-color: var(--color-cobalt);
-    font-weight: 700;
+    color: var(--color-ink);
+    font-weight: 600;
+
+    .loading-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: var(--radius-pill);
+      background-color: var(--color-ink);
+      box-shadow: 0 0 0 3px rgba(28, 26, 23, 0.12);
+      animation: pulseDot 1.6s ease-in-out infinite;
+    }
   }
 
   &--done {
-    color: var(--color-sage);
-    background-color: var(--color-sage-wash);
-    border-color: var(--color-sage-border);
+    color: var(--color-ink-secondary);
+    font-weight: 500;
+
+    .loading-stage-marker {
+      color: var(--color-ink-muted);
+    }
+  }
+
+  &--pending {
+    color: var(--color-ink-faint);
+    font-weight: 400;
+
+    .loading-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: var(--radius-pill);
+      background-color: var(--color-border);
+    }
+  }
+}
+
+.loading-stage-marker {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  svg {
+    stroke: currentColor;
+  }
+}
+
+.loading-stage-text {
+  flex: 1;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.6;
   }
 }

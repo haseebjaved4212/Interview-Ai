@@ -4,14 +4,16 @@
 
 // ── Palette: Paper Canvas & Surface Tiers ─────────────────────────────────────
 $paper-base:             #F6F2EA; // Warm cream primary canvas
-$paper-surface:          #EDE8DE; // Subordinate panel surface
-$paper-card:             #FDFAF5; // Elevated crisp stationery card face
-$paper-elevated:         #E5DFD2; // Hover & interactive layer
-$paper-sunken:           #DCD5C6; // Inset inputs & deep recesses
+$paper-surface-raised:   #FCFAF6; // Lighter raised surface for content areas (workspace, report center, forms)
+$paper-surface-deep:     #EDE8DE; // Deeper surface for auth left panel, report left nav & right rail
+$paper-surface:          $paper-surface-raised; // Content surface default
+$paper-card:             $paper-surface-raised; // Content card default
+$paper-elevated:         #F3EFE7; // Subtle interactive hover layer
+$paper-sunken:           #EDE8DE; // Inset inputs & deep recesses
 
 // ── Editorial Hairlines & Borders ─────────────────────────────────────────────
-$rule-hairline:          #E2DDD2; // Subtle 1px dividing hairline
-$rule-border:            #D5CEBF; // Card & field outline
+$rule-hairline:          #DDD6C8; // Subtle 1px dividing hairline
+$rule-border:            #DDD6C8; // Content & field outline
 $rule-border-hover:      #B7AE9C; // Interactive boundary hover
 $rule-border-focus:      #2D3FE0; // Cobalt focus boundary
 
@@ -56,12 +58,12 @@ $space-12:               3rem;     // 48px
 $space-16:               4rem;     // 64px
 $space-20:               5rem;     // 80px
 
-// ── Corner Radii (Crisp Paper Stationery Cuts) ────────────────────────────────
-$radius-xs:              2px;
-$radius-sm:              4px;
+// ── Corner Radii (Two Values Only: 6px Controls, 12px Surfaces) ───────────────
+$radius-xs:              6px;
+$radius-sm:              6px;
 $radius-md:              6px;
-$radius-lg:              10px;
-$radius-pill:            9999px;
+$radius-lg:              12px;
+$radius-pill:            9999px; // Avatar only
 
 // ── Z-Index Layers ────────────────────────────────────────────────────────────
 $z-canvas:               0;
@@ -74,10 +76,12 @@ $z-modal:                50;
 // ── CSS Custom Properties (:root) ─────────────────────────────────────────────
 // Components exclusively read var(--...) from here
 :root {
-  // Surfaces
+  // Surfaces: Max 2 Tonal Levels (Page vs Content vs Deep)
   --color-canvas: #{$paper-base};
-  --color-surface: #{$paper-surface};
-  --color-card: #{$paper-card};
+  --color-surface: #{$paper-surface-raised};
+  --color-surface-raised: #{$paper-surface-raised};
+  --color-surface-deep: #{$paper-surface-deep};
+  --color-card: #{$paper-surface-raised};
   --color-elevated: #{$paper-elevated};
   --color-sunken: #{$paper-sunken};
 
@@ -124,17 +128,17 @@ $z-modal:                50;
   --space-16: #{$space-16};
   --space-20: #{$space-20};
 
-  // Radii
-  --radius-xs: #{$radius-xs};
-  --radius-sm: #{$radius-sm};
-  --radius-md: #{$radius-md};
-  --radius-lg: #{$radius-lg};
-  --radius-pill: #{$radius-pill};
+  // Radii: 6px controls, 12px large surfaces
+  --radius-xs: 6px;
+  --radius-sm: 6px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
 
-  // Shadows (Delicate ambient paper diffusion)
-  --shadow-subtle: 0 1px 2px rgba(28, 26, 23, 0.04), 0 2px 6px rgba(28, 26, 23, 0.02);
-  --shadow-card: 0 1px 3px rgba(28, 26, 23, 0.05), 0 6px 18px rgba(28, 26, 23, 0.04);
-  --shadow-float: 0 12px 32px rgba(28, 26, 23, 0.08), 0 2px 6px rgba(28, 26, 23, 0.03);
+  // Shadows: No shadows on static cards
+  --shadow-subtle: none;
+  --shadow-card: none;
+  --shadow-float: 0 12px 32px rgba(28, 26, 23, 0.08);
 
   // Focus Ring
   --focus-ring: 0 0 0 2px #{$paper-base}, 0 0 0 4px #{$accent-cobalt};
