@@ -1,10 +1,9 @@
-<div align="center">
-  <img src="readme-assets/HireCraft-Banner-Image.jfif" alt="HireCraft-Banner-Image" width="100%" />
-</div>
 
 <div align="center">
 
-# HireCraft — UI & Visual Design Showcase
+# HireCraft 
+
+## UI & Visual Design Showcase
 
 ### A Comprehensive Visual Tour of the Light Editorial Studio Aesthetic
 
@@ -48,19 +47,30 @@ Every view is calibrated for sustained cognitive focus during high-stakes career
 
 ## Table of Contents
 
-1. [Landing Page Experience](#1-landing-page-experience)
-2. [Sectional Breakdown of the Landing Page](#2-sectional-breakdown-of-the-landing-page)
-3. [Asymmetric Authentication Split](#3-asymmetric-authentication-split)
-4. [Candidate Workspace & Input Flow](#4-candidate-workspace--input-flow)
-5. [Multi-Stage Generation State Machine](#5-multi-stage-generation-state-machine)
-6. [3-Column Interview Strategy Intelligence Report](#6-3-column-interview-strategy-intelligence-report)
-   - [Technical Questions Intelligence](#technical-questions-intelligence)
-   - [STAR Behavioral Scenarios](#star-behavioral-scenarios)
-   - [Structured 5-Day Preparation Roadmap](#structured-5-day-preparation-roadmap)
-   - [Match Score Arc & Categorized Skill Gaps](#match-score-arc--categorized-skill-gaps)
-7. [Saved Reports History Grid](#7-saved-reports-history-grid)
-8. [Design System Evolution (Before vs After)](#8-design-system-evolution-before-vs-after)
-9. [Accessibility & Micro-Interaction Standards](#9-accessibility--micro-interaction-standards)
+- [HireCraft](#hirecraft)
+  - [UI \& Visual Design Showcase](#ui--visual-design-showcase)
+    - [A Comprehensive Visual Tour of the Light Editorial Studio Aesthetic](#a-comprehensive-visual-tour-of-the-light-editorial-studio-aesthetic)
+  - [Design System Foundations](#design-system-foundations)
+  - [Table of Contents](#table-of-contents)
+  - [1. Landing Page Experience](#1-landing-page-experience)
+  - [2. Sectional Breakdown of the Landing Page](#2-sectional-breakdown-of-the-landing-page)
+    - [Navigation Bar](#navigation-bar)
+    - [Hero \& Live Preview](#hero--live-preview)
+    - [3-Step Interactive Workflow](#3-step-interactive-workflow)
+    - [Features Grid \& Tactile Footer](#features-grid--tactile-footer)
+  - [3. Asymmetric Authentication Split](#3-asymmetric-authentication-split)
+    - [User Registration](#user-registration)
+    - [User Login](#user-login)
+  - [4. Candidate Workspace \& Input Flow](#4-candidate-workspace--input-flow)
+  - [5. Multi-Stage Generation State Machine](#5-multi-stage-generation-state-machine)
+  - [6. 3-Column Interview Strategy Intelligence Report](#6-3-column-interview-strategy-intelligence-report)
+    - [Technical Questions Intelligence](#technical-questions-intelligence)
+    - [STAR Behavioral Scenarios](#star-behavioral-scenarios)
+    - [Structured 5-Day Preparation Roadmap](#structured-5-day-preparation-roadmap)
+    - [Match Score Arc \& Categorized Skill Gaps](#match-score-arc--categorized-skill-gaps)
+  - [7. Saved Reports History Grid](#7-saved-reports-history-grid)
+  - [8. Design System Evolution (Before vs After)](#8-design-system-evolution-before-vs-after)
+  - [9. Accessibility \& Micro-Interaction Standards](#9-accessibility--micro-interaction-standards)
 
 ---
 
