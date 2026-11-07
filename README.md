@@ -17,6 +17,7 @@
 [![Puppeteer](https://img.shields.io/badge/Puppeteer-PDF_Engine-00D8A2?style=flat-square&logo=puppeteer&logoColor=black)](https://pptr.dev/)
 [![SCSS 7-1](https://img.shields.io/badge/Sass-7--1_Pattern-CC6699?style=flat-square&logo=sass&logoColor=white)](https://sass-lang.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![UI Showcase](https://img.shields.io/badge/%F0%9F%8E%A8_UI_Showcase-Explore_Screenshots-2D3FE0?style=flat-square)](UI-SHOWCASE.md)
 
 </div>
 
@@ -68,6 +69,8 @@
 ---
 
 ## Visual Showcase: Light Editorial Studio
+
+> 🎨 **Looking for an extensive visual walkthrough?** Explore our dedicated [**UI Showcase (UI-SHOWCASE.md)**](UI-SHOWCASE.md) featuring full-resolution desktop and mobile side-by-side walkthroughs, micro-interaction states, component breakdowns, and design evolution comparisons.
 
 Designed with a calm, tactile, publication-grade **Light Editorial Studio** aesthetic. Built upon warm paper surfaces (`#F6F2EA`), crisp ink typography, Fraunces display serif, Manrope interface grotesk, and focused cobalt (`#2D3FE0`) actions.
 
