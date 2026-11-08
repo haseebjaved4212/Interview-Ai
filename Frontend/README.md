@@ -1,4 +1,4 @@
-# Interview AI — Frontend Application
+# HireCraft - Frontend Application
 
 A modern, responsive Single Page Application (SPA) built with React 19 and Vite. The frontend serves as the user-facing portal for the Interview AI platform, allowing candidates to register, authenticate, submit their resume and target job descriptions, explore AI-generated interview preparation reports, view match scores and skill gap analyses, and download tailored, ATS-friendly PDF resumes.
 
@@ -6,7 +6,7 @@ A modern, responsive Single Page Application (SPA) built with React 19 and Vite.
 
 ## Table of Contents
 
-- [Interview AI — Frontend Application](#interview-ai--frontend-application)
+- [HireCraft - Frontend Application](#hirecraft---frontend-application)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [📸 Application Screenshots](#-application-screenshots)
