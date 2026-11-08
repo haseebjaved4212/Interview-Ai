@@ -4,9 +4,9 @@
 
 <div align="center">
 
-# HireCraft: Targeted Interview Intelligence & Career Strategy Platform
+# HireCraft
 
-> An intelligent, AI-driven career acceleration platform that evaluates candidate resumes against target job descriptions, produces role-specific technical and behavioral interview preparation roadmaps, calculates candidate-role match scores, identifies skill gaps, and compiles customized ATS-friendly PDF resumes.
+ An intelligent, AI-driven career acceleration platform that evaluates candidate resumes against target job descriptions, produces role-specific technical and behavioral interview preparation roadmaps, calculates candidate-role match scores, identifies skill gaps, and compiles customized ATS-friendly PDF resumes.
 
 [![React 19](https://img.shields.io/badge/React-19.x-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
 [![Vite 8](https://img.shields.io/badge/Vite-8.x-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -25,7 +25,7 @@
 
 ## Table of Contents
 
-- [HireCraft: Targeted Interview Intelligence \& Career Strategy Platform](#hirecraft-targeted-interview-intelligence--career-strategy-platform)
+- [HireCraft](#hirecraft)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Key Features](#key-features)
@@ -242,4 +242,9 @@ npm run build --prefix Frontend
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+© 2026 Haseeb Javed.
+
+---
+<h3 align="center">
+    <img src="https://readme-typing-svg.herokuapp.com?key=1&width=400&height=40&lines=Made+with+%E2%9D%A4%EF%B8%8F+by+Haseeb+Javed" alt="Typing SVG" />
+</h3>
