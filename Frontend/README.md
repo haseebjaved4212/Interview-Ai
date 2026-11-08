@@ -9,7 +9,6 @@ A modern, responsive Single Page Application (SPA) built with React 19 and Vite.
 - [HireCraft - Frontend Application](#hirecraft---frontend-application)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
-  - [📸 Application Screenshots](#-application-screenshots)
   - [Key Features](#key-features)
   - [Tech Stack](#tech-stack)
   - [System Architecture](#system-architecture)
@@ -49,17 +48,7 @@ The application allows users to:
 
 ---
 
-## 📸 Application Screenshots
 
-| Target Job & Profile Input | Full Strategy Report |
-| :---: | :---: |
-| ![Form Input](public/screenshots/04_home_form_filled.png) | ![Full Report](public/screenshots/05_interview_strategy_report.png) |
-
-| Technical Questions & Model Answers | 5-Day Study Road Map |
-| :---: | :---: |
-| ![Technical Questions](public/screenshots/06_technical_questions_section.png) | ![Preparation Road Map](public/screenshots/08_preparation_roadmap_section.png) |
-
----
 
 ## Key Features
 
