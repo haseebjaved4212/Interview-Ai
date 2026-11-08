@@ -6,19 +6,33 @@ A modern, responsive Single Page Application (SPA) built with React 19 and Vite.
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [System Architecture](#system-architecture)
-- [Folder Structure](#folder-structure)
-- [Component and Feature Hierarchy](#component-and-feature-hierarchy)
-- [State Management and Context Architecture](#state-management-and-context-architecture)
-- [Routing and Navigation](#routing-and-navigation)
-- [API Integration and Services](#api-integration-and-services)
-- [Styling Architecture and Design System](#styling-architecture-and-design-system)
-- [Prerequisites and Installation](#prerequisites-and-installation)
-- [Development and Build Scripts](#development-and-build-scripts)
-- [Troubleshooting and Common Issues](#troubleshooting-and-common-issues)
+- [Interview AI — Frontend Application](#interview-ai--frontend-application)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [📸 Application Screenshots](#-application-screenshots)
+  - [Key Features](#key-features)
+  - [Tech Stack](#tech-stack)
+  - [System Architecture](#system-architecture)
+  - [Folder Structure](#folder-structure)
+  - [Component and Feature Hierarchy](#component-and-feature-hierarchy)
+    - [1. Authentication Domain (`src/features/auth`)](#1-authentication-domain-srcfeaturesauth)
+    - [2. Interview Domain (`src/features/interview`)](#2-interview-domain-srcfeaturesinterview)
+  - [State Management and Context Architecture](#state-management-and-context-architecture)
+    - [Context Comparison](#context-comparison)
+  - [Routing and Navigation](#routing-and-navigation)
+  - [API Integration and Services](#api-integration-and-services)
+    - [1. Authentication Service (`src/features/auth/services/auth.api.js`)](#1-authentication-service-srcfeaturesauthservicesauthapijs)
+    - [2. Interview Service (`src/features/interview/services/interview.api.js`)](#2-interview-service-srcfeaturesinterviewservicesinterviewapijs)
+  - [Styling Architecture and Design System](#styling-architecture-and-design-system)
+  - [Prerequisites and Installation](#prerequisites-and-installation)
+    - [Prerequisites](#prerequisites)
+    - [Installation Steps](#installation-steps)
+  - [Development and Build Scripts](#development-and-build-scripts)
+  - [Troubleshooting and Common Issues](#troubleshooting-and-common-issues)
+    - [1. Network Error or Failed API Requests](#1-network-error-or-failed-api-requests)
+    - [2. Unauthorized or Endless Redirect to `/login`](#2-unauthorized-or-endless-redirect-to-login)
+    - [3. Resume File Upload Rejected](#3-resume-file-upload-rejected)
+    - [4. Resume PDF Download Does Not Start](#4-resume-pdf-download-does-not-start)
 
 ---
 
@@ -141,51 +155,98 @@ flowchart TD
 ## Folder Structure
 
 ```
+
 Frontend/
-├── public/                           # Static assets served as-is
-│   ├── favicon.svg
-│   └── icons.svg
+├── public/
+│   ├── readme-assets/
+│   │   ├── HireCraft-Banner-Image.jfif
+│   │   └── HireCraft-Banner-Image.png
+│   ├── HireCraft-Favicon.jfif
+│   └── HireCraft-Favicon.png
 ├── src/
 │   ├── features/
-│   │   ├── auth/                     # Authentication Feature Module
+│   │   ├── auth/
 │   │   │   ├── components/
-│   │   │   │   └── Protected.jsx     # Route guard component for authenticated routes
+│   │   │   │   └── Protected.jsx
 │   │   │   ├── hooks/
-│   │   │   │   └── useAuth.js        # Hook exposing authentication operations and state
+│   │   │   │   └── useAuth.js
 │   │   │   ├── pages/
-│   │   │   │   ├── Login.jsx         # User login form view
-│   │   │   │   └── Register.jsx      # User registration form view
+│   │   │   │   ├── Login.jsx
+│   │   │   │   └── Register.jsx
 │   │   │   ├── services/
-│   │   │   │   └── auth.api.js       # Axios network calls for auth endpoints
-│   │   │   ├── auth.context.jsx      # React Context definition for current user and state
-│   │   │   └── auth.form.scss        # SCSS stylesheet for auth forms
-│   │   ├── interview/                # Interview Preparation Feature Module
+│   │   │   │   └── auth.api.js
+│   │   │   ├── auth.context.jsx
+│   │   │   └── auth.form.scss
+│   │   ├── interview/
 │   │   │   ├── hooks/
-│   │   │   │   └── useInterview.js   # Hook encapsulating report generation and state
+│   │   │   │   └── useInterview.js
 │   │   │   ├── pages/
-│   │   │   │   ├── Home.jsx          # Strategy creation form and history view
-│   │   │   │   └── Interview.jsx     # Detailed report explorer and PDF resume trigger
+│   │   │   │   ├── Home.jsx
+│   │   │   │   └── Interview.jsx
 │   │   │   ├── services/
-│   │   │   │   └── interview.api.js  # Axios network calls for interview endpoints
+│   │   │   │   └── interview.api.js
 │   │   │   ├── style/
-│   │   │   │   ├── home.scss         # SCSS stylesheet for Home view
-│   │   │   │   └── interview.scss    # SCSS stylesheet for Interview view
-│   │   │   └── Interview.context.jsx # React Context definition for active reports and list
+│   │   │   │   ├── home.scss
+│   │   │   │   └── interview.scss
+│   │   │   └── Interview.context.jsx
+│   │   ├── landing/
+│   │   │   ├── components/
+│   │   │   │   ├── FeaturesSection.jsx
+│   │   │   │   ├── HeroPreviewCard.jsx
+│   │   │   │   ├── PublicFooter.jsx
+│   │   │   │   ├── PublicNavbar.jsx
+│   │   │   │   └── WorkflowSection.jsx
+│   │   │   └── pages/
+│   │   │       └── Landing.jsx
 │   │   └── styles/
-│   │       └── button.scss           # Reusable button styles and animations
-│   ├── App.jsx                       # Provider hierarchy and root application setup
-│   ├── app.route.jsx                 # Client-side router declarations (React Router)
-│   ├── main.jsx                      # React application bootstrapper (StrictMode & DOM mount)
-│   └── style.scss                    # Global CSS reset, font rules, and base styling
-├── eslint.config.js                  # ESLint configuration
-├── index.html                        # HTML entry point template
-├── package.json                      # Project metadata, dependencies, and npm scripts
-├── package-lock.json                 # Dependency lockfile
-├── README.md                         # Frontend documentation
-└── vite.config.js                    # Vite configuration with React plugin
-```
+│   │       ├── _tokens.scss
+│   │       └── button.scss
+│   ├── styles/
+│   │   ├── abstracts/
+│   │   │   ├── _functions.scss
+│   │   │   ├── _index.scss
+│   │   │   ├── _mixins.scss
+│   │   │   ├── _motion.scss
+│   │   │   ├── _tokens.scss
+│   │   │   └── _typography.scss
+│   │   ├── base/
+│   │   │   ├── _base.scss
+│   │   │   └── _reset.scss
+│   │   ├── components/
+│   │   │   ├── _badges.scss
+│   │   │   ├── _buttons.scss
+│   │   │   ├── _cards.scss
+│   │   │   ├── _inputs.scss
+│   │   │   ├── _loader.scss
+│   │   │   ├── _preview-card.scss
+│   │   │   ├── _score.scss
+│   │   │   └── _workflow.scss
+│   │   ├── layout/
+│   │   │   ├── _footer.scss
+│   │   │   ├── _grid.scss
+│   │   │   ├── _navbar-public.scss
+│   │   │   ├── _navigation.scss
+│   │   │   └── _rail.scss
+│   │   ├── pages/
+│   │   │   ├── _auth.scss
+│   │   │   ├── _home.scss
+│   │   │   ├── _interview.scss
+│   │   │   └── _landing.scss
+│   │   └── main.scss
+│   ├── App.jsx
+│   ├── app.route.jsx
+│   ├── main.jsx
+│   └── style.scss
+├── eslint.config.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── README.md
+└── vite.config.js
 
 ---
+
+```
 
 ## Component and Feature Hierarchy
 
