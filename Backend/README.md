@@ -1,10 +1,10 @@
-#  Interview AI — Backend Service
+#  HireCraft - Backend Service
 
 A high-performance Node.js & Express REST API that powers **Interview AI**, an intelligent career preparation platform. The service leverages **Google Gemini AI** (`@google/genai`), **Puppeteer**, and **MongoDB** to analyze resumes, evaluate candidate profiles against job descriptions, generate customized interview preparation reports, and produce tailored, ATS-friendly PDF resumes on demand.
 
 ---
 
-## 📑 Table of Contents
+##  Table of Contents
 
 - [Overview](#-overview)
 - [Key Features](#-key-features)
@@ -140,31 +140,31 @@ flowchart TD
 Backend/
 ├── src/
 │   ├── config/
-│   │   └── database.js               # MongoDB connection setup using Mongoose
+│   │   └── database.js
 │   ├── controllers/
-│   │   ├── auth.controller.js        # Logic for user signup, signin, logout, profile
-│   │   └── interview.controller.js   # Logic for report generation, fetching, and PDF export
+│   │   ├── auth.controller.js
+│   │   └── interview.controller.js
 │   ├── middlewares/
-│   │   ├── auth.middleware.js        # JWT verification and blacklist validator
-│   │   └── file.middleware.js        # Multer in-memory upload handler (3MB limit)
+│   │   ├── auth.middleware.js
+│   │   └── file.middleware.js
 │   ├── models/
-│   │   ├── blacklist.model.js        # Token blacklist model with 24-hour TTL expiration
-│   │   ├── interviewReport.model.js  # Interview report schema & subdocument definitions
-│   │   └── user.model.js             # User account schema with unique email & username
+│   │   ├── blacklist.model.js
+│   │   ├── interviewReport.model.js
+│   │   └── user.model.js
 │   ├── routes/
-│   │   ├── auth.routes.js            # Express router mapping /api/auth endpoints
-│   │   └── interview.routes.js       # Express router mapping /api/interview endpoints
+│   │   ├── auth.routes.js
+│   │   └── interview.routes.js
 │   ├── services/
-│   │   └── ai.service.js             # Gemini AI integration, Zod schemas & Puppeteer rendering
-│   └── app.js                        # Express application instance and middleware pipeline
-├── .env                              # Local private environment variables (git-ignored)
-├── .env.example                      # Sample template of environment variables
-├── .gitignore                        # Git exclusion rules
-├── package.json                      # Project metadata, dependencies, and scripts
-├── package-lock.json                 # Dependency lockfile
-├── README.md                         # Backend system documentation
-└── server.js                         # Application entry point (boots DB and starts HTTP server)
+│   │   └── ai.service.js
+│   └── app.js
+├── tests/
+│   └── backend.test.js
+├── package-lock.json
+├── package.json
+├── README.md
+└── server.js
 ```
+
 
 ---
 
