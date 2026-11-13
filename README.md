@@ -16,7 +16,6 @@
 [![MongoDB Atlas](https://img.shields.io/badge/MongoDB-Atlas-47A248?style=flat-square&logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
 [![Puppeteer](https://img.shields.io/badge/Puppeteer-PDF_Engine-00D8A2?style=flat-square&logo=puppeteer&logoColor=black)](https://pptr.dev/)
 [![SCSS 7-1](https://img.shields.io/badge/Sass-7--1_Pattern-CC6699?style=flat-square&logo=sass&logoColor=white)](https://sass-lang.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 [![UI Showcase](https://img.shields.io/badge/%F0%9F%8E%A8_UI_Showcase-Explore_Screenshots-2D3FE0?style=flat-square)](UI-SHOWCASE.md)
 
 </div>
