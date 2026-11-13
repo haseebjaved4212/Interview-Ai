@@ -51,7 +51,7 @@ const PublicNavbar = () => {
                         </Link>
                     ) : (
                         <>
-                            <Link to="/login" className="button secondary-button public-nav__btn">
+                            <Link to="/login" className="public-nav__link">
                                 Log in
                             </Link>
                             <Link to="/register" className="button primary-button public-nav__btn">

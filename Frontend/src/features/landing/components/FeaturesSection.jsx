@@ -16,9 +16,9 @@ const FeaturesSection = () => {
                     {/* Feature 1: Large Featured Card (Technical & Behavioral Questions) */}
                     <div className="feature-card feature-card--large">
                         <div className="feature-card__content">
-                            <span className="feature-card__tag">Core Analysis</span>
+                            <span className="feature-card__tag">Core analysis</span>
                             <h3 className="feature-card__heading">
-                                Technical and Behavioral Questions
+                                Technical and behavioral questions
                             </h3>
                             <p className="feature-card__copy">
                                 Detailed questions tailored to the target role with the specific interviewer intention behind each inquiry.
@@ -34,7 +34,7 @@ const FeaturesSection = () => {
                                     <span className="feature-mini-preview__text">Evaluates architectural trade-offs and failure mitigation.</span>
                                 </div>
                                 <div className="feature-mini-preview__item">
-                                    <span className="q-card__tag q-card__tag--answer">Model Answer</span>
+                                    <span className="q-card__tag q-card__tag--answer">Model answer</span>
                                     <span className="feature-mini-preview__text">Structured response with concrete metrics and lessons learned.</span>
                                 </div>
                             </div>
@@ -45,7 +45,7 @@ const FeaturesSection = () => {
                     <div className="feature-card feature-card--medium">
                         <span className="feature-card__tag">Alignment</span>
                         <h3 className="feature-card__heading">
-                            Role Match Score
+                            Role match score
                         </h3>
                         <p className="feature-card__copy">
                             An objective percentage score assessing alignment between your profile and role requirements.
@@ -59,7 +59,7 @@ const FeaturesSection = () => {
                     <div className="feature-card feature-card--medium">
                         <span className="feature-card__tag">Diagnostics</span>
                         <h3 className="feature-card__heading">
-                            Skill Gap Analysis
+                            Skill gap analysis
                         </h3>
                         <p className="feature-card__copy">
                             Clear indicators highlighting missing competencies, tools, and technical areas.
@@ -73,7 +73,7 @@ const FeaturesSection = () => {
                     <div className="feature-card feature-card--medium">
                         <span className="feature-card__tag">Execution</span>
                         <h3 className="feature-card__heading">
-                            Day by Day Preparation Roadmap
+                            Preparation roadmap
                         </h3>
                         <p className="feature-card__copy">
                             A structured multi-day timeline breaking preparation into manageable milestones.
@@ -87,7 +87,7 @@ const FeaturesSection = () => {
                     <div className="feature-card feature-card--medium">
                         <span className="feature-card__tag">Export</span>
                         <h3 className="feature-card__heading">
-                            ATS Friendly Resume
+                            ATS friendly resume
                         </h3>
                         <p className="feature-card__copy">
                             Generate and export a clean PDF resume tailored to the target job description.

@@ -43,7 +43,7 @@ const Login = () => {
                 <div className="auth-form-wrapper">
                     <div className="form-container">
                         <header className="form-header">
-                            <h1 className="form-title">Welcome back</h1>
+                            <h1 className="form-title">Log in</h1>
                             <p className="form-sub">Pick up where you left off.</p>
                         </header>
 
@@ -80,7 +80,7 @@ const Login = () => {
                                     autoComplete="current-password"
                                 />
                             </div>
-                            <button className="button primary-button auth-submit">Login</button>
+                            <button className="button primary-button auth-submit">Log in</button>
                         </form>
 
                         <p className="auth-switch">

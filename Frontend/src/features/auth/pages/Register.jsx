@@ -95,7 +95,7 @@ const Register = () => {
                                 />
                             </div>
 
-                            <button className="button primary-button auth-submit">Register</button>
+                            <button className="button primary-button auth-submit">Create account</button>
                         </form>
 
                         <p className="auth-switch">

@@ -4,8 +4,8 @@ const HeroPreviewCard = () => {
             <div className="preview-card">
                 {/* Station card top label */}
                 <div className="preview-card__header">
-                    <div className="preview-card__badge">Strategy Report Preview</div>
-                    <span className="preview-card__meta">HireCraft Engine</span>
+                    <div className="preview-card__badge">Strategy report preview</div>
+                    <span className="preview-card__meta">Sample output</span>
                 </div>
 
                 {/* Score & Gaps summary row */}
@@ -16,13 +16,13 @@ const HeroPreviewCard = () => {
                             <span className="preview-card__score-pct">%</span>
                         </div>
                         <div className="preview-card__score-info">
-                            <span className="preview-card__score-title">Match Score</span>
+                            <span className="preview-card__score-title">Match score</span>
                             <span className="preview-card__score-desc">Strong match for this role</span>
                         </div>
                     </div>
 
                     <div className="preview-card__gaps">
-                        <span className="preview-card__gaps-label">Skill Gaps</span>
+                        <span className="preview-card__gaps-label">Skill gaps</span>
                         <div className="preview-card__gap-tags">
                             <span className="skill-tag skill-tag--medium">Cloud Infrastructure</span>
                             <span className="skill-tag skill-tag--low">System Scalability</span>
@@ -70,7 +70,7 @@ const HeroPreviewCard = () => {
                             <line x1="16" y1="13" x2="8" y2="13" />
                             <line x1="16" y1="17" x2="8" y2="17" />
                         </svg>
-                        <span>ATS Friendly Resume Ready</span>
+                        <span>ATS resume generated</span>
                     </div>
                 </div>
             </div>

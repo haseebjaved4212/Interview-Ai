@@ -10,7 +10,6 @@
   align-items: center;
   width: 100%;
   max-width: 540px;
-  perspective: 1000px;
 }
 
 .preview-card {
@@ -19,26 +18,15 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-5) var(--space-6);
-  box-shadow: 0 12px 36px rgba(28, 26, 23, 0.08), 0 2px 6px rgba(28, 26, 23, 0.04);
-  transform: rotate(-1.2deg);
-  transition: transform var(--duration-normal) var(--ease-smooth),
-              box-shadow var(--duration-normal) var(--ease-smooth);
-  animation: ambientFloat 8s ease-in-out infinite;
+  box-shadow: 0 4px 16px rgba(28, 26, 23, 0.05);
+  transition: border-color var(--duration-fast) var(--ease-smooth);
 
   @include respond-to('md') {
-    transform: none;
-    animation: none;
     padding: var(--space-4);
   }
 
-  @include reduced-motion {
-    animation: none;
-    transform: none;
-  }
-
   &:hover {
-    transform: rotate(0deg) translateY(-4px);
-    box-shadow: 0 16px 44px rgba(28, 26, 23, 0.12), 0 4px 10px rgba(28, 26, 23, 0.06);
+    border-color: var(--color-border-hover);
   }
 
   // ── Header Row ──
@@ -55,10 +43,10 @@
     @include mono-stamp;
     color: var(--color-cobalt);
     background-color: var(--color-cobalt-wash);
-    border: 1px solid rgba(45, 63, 224, 0.18);
+    border: 1px solid rgba(45, 63, 224, 0.16);
     padding: 0.2rem 0.55rem;
-    border-radius: var(--radius-pill);
-    font-size: 0.7rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.72rem;
   }
 
   &__meta {
@@ -92,11 +80,11 @@
   &__score-ring {
     width: 58px;
     height: 58px;
-    border-radius: 50%;
+    border-radius: var(--radius-sm);
     display: flex;
     align-items: baseline;
     justify-content: center;
-    border: 3.5px solid var(--color-sage);
+    border: 1px solid var(--color-border);
     background-color: var(--color-surface);
     flex-shrink: 0;
     padding-top: 10px;
@@ -128,14 +116,13 @@
   &__score-title {
     font-family: var(--font-mono);
     font-size: var(--text-meta);
-    text-transform: uppercase;
-    letter-spacing: var(--track-wide);
+    letter-spacing: var(--track-normal);
     color: var(--color-ink-muted);
   }
 
   &__score-desc {
     font-size: var(--text-sub);
-    font-weight: 600;
+    font-weight: 500;
     color: var(--color-ink);
   }
 
@@ -148,8 +135,7 @@
   &__gaps-label {
     font-family: var(--font-mono);
     font-size: var(--text-meta);
-    text-transform: uppercase;
-    letter-spacing: var(--track-wide);
+    letter-spacing: var(--track-normal);
     color: var(--color-ink-muted);
   }
 
@@ -185,20 +171,19 @@
   &__q-index {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-cobalt);
     background-color: var(--color-card);
     border: 1px solid var(--color-border-hairline);
     padding: 0.1rem 0.35rem;
-    border-radius: 3px;
+    border-radius: 4px;
     flex-shrink: 0;
   }
 
   &__q-type {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: var(--track-wide);
+    font-size: 0.72rem;
+    letter-spacing: var(--track-normal);
     color: var(--color-ink-muted);
     flex-shrink: 0;
     margin-top: 1px;
@@ -229,7 +214,7 @@
     margin: 0;
   }
 
-  // ── Bottom ATS Pill ──
+  // ── Bottom ATS Chip ──
   &__footer {
     padding-top: var(--space-3);
     margin-top: var(--space-3);
@@ -248,16 +233,6 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     padding: 0.25rem 0.65rem;
-    border-radius: var(--radius-pill);
-  }
-}
-
-// ── Gentle Ambient Float ──
-@keyframes ambientFloat {
-  0%, 100% {
-    transform: rotate(-1.2deg) translateY(0);
-  }
-  50% {
-    transform: rotate(-0.7deg) translateY(-8px);
+    border-radius: var(--radius-sm);
   }
 }

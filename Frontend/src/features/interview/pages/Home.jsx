@@ -173,7 +173,7 @@ const Home = () => {
                 <section className='home-hero'>
                     <h1 className='home-hero__title'>Build your interview plan</h1>
                     <p className='home-hero__sub'>
-                        Paste the job description, add your profile, and get your plan in about 30 seconds.
+                        Paste the job description and your profile to generate a focused preparation plan.
                     </p>
                 </section>
 

@@ -60,7 +60,7 @@
   h2 {
     font-family: var(--font-display);
     font-size: var(--text-h2);
-    font-weight: 700;
+    font-weight: 600;
     color: var(--color-ink);
     letter-spacing: var(--track-tight);
     margin: 0;
@@ -71,7 +71,7 @@
     color: var(--color-ink-muted);
     background-color: var(--color-surface);
     border: 1px solid var(--color-border-hairline);
-    padding: 0.25rem 0.65rem;
-    border-radius: var(--radius-pill);
+    padding: 0.2rem 0.55rem;
+    border-radius: var(--radius-sm);
   }
 }

@@ -47,15 +47,10 @@
 .skill-tag {
   font-family: var(--font-ui);
   font-size: var(--text-sub);
-  font-weight: 600;
-  padding: 0.35rem 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.6rem;
   border-radius: var(--radius-sm);
   cursor: default;
-  transition: transform var(--duration-fast) var(--ease-smooth);
-
-  &:hover {
-    transform: translateY(-1px);
-  }
 
   &--high {
     color: var(--color-terracotta);

@@ -68,17 +68,6 @@ $duration-deliberate:700ms;
   }
 }
 
-@keyframes pulseGently {
-  0%, 100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 0.92;
-    transform: translateY(-2px);
-  }
-}
-
 @keyframes progressSweep {
   0% {
     transform: translateX(-100%);

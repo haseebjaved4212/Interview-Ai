@@ -98,7 +98,7 @@ const WorkflowSection = () => {
                                             <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
                                             <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                                         </svg>
-                                        <span>Target Job Description</span>
+                                        <span>Target job description</span>
                                     </div>
                                     <div className="step-card__text-preview">
                                         Senior Frontend Engineer: proficiency with React, distributed state, performance profiling...
@@ -106,7 +106,7 @@ const WorkflowSection = () => {
                                 </div>
 
                                 <div className="step-input-divider">
-                                    <span className="step-input-divider__tag">OR</span>
+                                    <span className="step-input-divider__tag">or</span>
                                 </div>
 
                                 {/* Resume Upload Card */}
@@ -117,7 +117,7 @@ const WorkflowSection = () => {
                                             <polyline points="17 8 12 3 7 8" />
                                             <line x1="12" y1="3" x2="12" y2="15" />
                                         </svg>
-                                        <span>Resume Dropzone (PDF or DOCX)</span>
+                                        <span>Resume upload (PDF or DOCX)</span>
                                     </div>
                                     <p className="step-card__subtext">Upload file or enter self description</p>
                                 </div>
@@ -140,11 +140,11 @@ const WorkflowSection = () => {
                                 <div className="step-stream__inputs">
                                     <div className="step-stream__node step-stream__node--left">
                                         <span className="step-stream__dot" />
-                                        <span>Job Requirements</span>
+                                        <span>Job requirements</span>
                                     </div>
                                     <div className="step-stream__node step-stream__node--right">
                                         <span className="step-stream__dot" />
-                                        <span>Your Profile</span>
+                                        <span>Your profile</span>
                                     </div>
                                 </div>
 
@@ -154,8 +154,7 @@ const WorkflowSection = () => {
 
                                 {/* Central calibrated node with live rotating stage labels */}
                                 <div className="step-engine-node">
-                                    <div className="step-engine-node__pulse" />
-                                    <div className="step-engine-node__badge">Analyzing Dual Vectors</div>
+                                    <div className="step-engine-node__badge">Comparing requirements</div>
                                     <div className="step-engine-node__stage" key={currentStage}>
                                         {ROTATING_STAGES[currentStage]}
                                     </div>
@@ -164,36 +163,36 @@ const WorkflowSection = () => {
                         </div>
                     </div>
 
-                    {/* Step 3: AI builds your strategy */}
+                    {/* Step 3: Your strategy report is ready */}
                     <div className="workflow-step workflow-step--3">
                         <div className="workflow-step__marker">
                             <span className="workflow-step__num">3</span>
                         </div>
                         <div className="workflow-step__body">
-                            <h3 className="workflow-step__title">AI builds your strategy</h3>
+                            <h3 className="workflow-step__title">Your strategy report is ready</h3>
                             <p className="workflow-step__desc">
                                 Inquiries, roadmaps, and score analysis fan out into clear, actionable candidate assets.
                             </p>
 
                             <div className="step-output-fan">
                                 <div className="fan-card fan-card--1">
-                                    <span className="fan-card__tag fan-card__tag--cobalt">Technical Questions</span>
+                                    <span className="fan-card__tag fan-card__tag--cobalt">Technical questions</span>
                                     <span className="fan-card__detail">Core concepts and code patterns</span>
                                 </div>
                                 <div className="fan-card fan-card--2">
-                                    <span className="fan-card__tag fan-card__tag--cobalt">Behavioral Questions</span>
+                                    <span className="fan-card__tag fan-card__tag--cobalt">Behavioral questions</span>
                                     <span className="fan-card__detail">Leadership and conflict scenarios</span>
                                 </div>
                                 <div className="fan-card fan-card--3">
-                                    <span className="fan-card__tag fan-card__tag--butter">Preparation Road Map</span>
+                                    <span className="fan-card__tag fan-card__tag--butter">Preparation roadmap</span>
                                     <span className="fan-card__detail">Milestones organized day by day</span>
                                 </div>
                                 <div className="fan-card fan-card--4">
-                                    <span className="fan-card__tag fan-card__tag--sage">Match Score</span>
+                                    <span className="fan-card__tag fan-card__tag--sage">Match score</span>
                                     <span className="fan-card__detail">Percentage alignment indicator</span>
                                 </div>
                                 <div className="fan-card fan-card--5">
-                                    <span className="fan-card__tag fan-card__tag--terracotta">Skill Gaps</span>
+                                    <span className="fan-card__tag fan-card__tag--terracotta">Skill gaps</span>
                                     <span className="fan-card__detail">Prioritized missing competencies</span>
                                 </div>
                             </div>

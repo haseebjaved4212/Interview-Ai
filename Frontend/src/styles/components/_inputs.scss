@@ -122,8 +122,7 @@
   cursor: pointer;
   text-align: center;
   transition: border-color var(--duration-fast) var(--ease-smooth),
-              background-color var(--duration-fast) var(--ease-smooth),
-              transform var(--duration-fast) var(--ease-smooth);
+              background-color var(--duration-fast) var(--ease-smooth);
 
   &:hover {
     border-color: var(--color-cobalt);
@@ -131,15 +130,13 @@
 
     .dropzone__icon {
       color: var(--color-cobalt);
-      transform: translateY(-2px);
     }
   }
 
   &__icon {
     color: var(--color-ink-muted);
     margin-bottom: var(--space-1);
-    transition: transform var(--duration-fast) var(--ease-smooth),
-                color var(--duration-fast) var(--ease-smooth);
+    transition: color var(--duration-fast) var(--ease-smooth);
 
     svg {
       width: 26px;
