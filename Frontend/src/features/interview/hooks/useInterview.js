@@ -25,7 +25,7 @@ export const useInterview = () => {
         } catch (error) {
             console.error("Failed to generate report:", error);
             const serverMessage = error?.response?.data?.message || error?.response?.data?.error;
-            throw new Error(serverMessage || "Failed to generate interview strategy. Please try again.");
+            throw new Error(serverMessage || "Failed to generate interview strategy. Please try again.", { cause: error });
         } finally {
             setLoading(false);
         }
