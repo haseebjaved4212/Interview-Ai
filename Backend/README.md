@@ -649,11 +649,15 @@ sequenceDiagram
 The available `npm` scripts defined in `package.json`:
 
 ```bash
+# Start backend in production mode
+npm start
+# (or directly: node server.js)
+
 # Start backend in development mode with hot-reloading (via nodemon)
 npm run dev
 
-# Start backend directly with Node (production mode)
-node server.js
+# Run backend automated test suite
+npm test
 ```
 
 ---

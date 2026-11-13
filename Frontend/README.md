@@ -147,10 +147,11 @@ flowchart TD
 
 Frontend/
 ├── public/
-│   ├── readme-assets/
-│   │   ├── HireCraft-Banner-Image.jfif
-│   │   └── HireCraft-Banner-Image.png
-│   ├── HireCraft-Favicon.jfif
+│   ├── apple-touch-icon.png
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── favicon-192x192.png
+│   ├── favicon.ico
 │   └── HireCraft-Favicon.png
 ├── src/
 │   ├── features/
@@ -164,8 +165,7 @@ Frontend/
 │   │   │   │   └── Register.jsx
 │   │   │   ├── services/
 │   │   │   │   └── auth.api.js
-│   │   │   ├── auth.context.jsx
-│   │   │   └── auth.form.scss
+│   │   │   └── auth.context.jsx
 │   │   ├── interview/
 │   │   │   ├── hooks/
 │   │   │   │   └── useInterview.js
@@ -174,22 +174,16 @@ Frontend/
 │   │   │   │   └── Interview.jsx
 │   │   │   ├── services/
 │   │   │   │   └── interview.api.js
-│   │   │   ├── style/
-│   │   │   │   ├── home.scss
-│   │   │   │   └── interview.scss
 │   │   │   └── Interview.context.jsx
-│   │   ├── landing/
-│   │   │   ├── components/
-│   │   │   │   ├── FeaturesSection.jsx
-│   │   │   │   ├── HeroPreviewCard.jsx
-│   │   │   │   ├── PublicFooter.jsx
-│   │   │   │   ├── PublicNavbar.jsx
-│   │   │   │   └── WorkflowSection.jsx
-│   │   │   └── pages/
-│   │   │       └── Landing.jsx
-│   │   └── styles/
-│   │       ├── _tokens.scss
-│   │       └── button.scss
+│   │   └── landing/
+│   │       ├── components/
+│   │       │   ├── FeaturesSection.jsx
+│   │       │   ├── HeroPreviewCard.jsx
+│   │       │   ├── PublicFooter.jsx
+│   │       │   ├── PublicNavbar.jsx
+│   │       │   └── WorkflowSection.jsx
+│   │       └── pages/
+│   │           └── Landing.jsx
 │   ├── styles/
 │   │   ├── abstracts/
 │   │   │   ├── _functions.scss
@@ -224,8 +218,7 @@ Frontend/
 │   │   └── main.scss
 │   ├── App.jsx
 │   ├── app.route.jsx
-│   ├── main.jsx
-│   └── style.scss
+│   └── main.jsx
 ├── eslint.config.js
 ├── index.html
 ├── package-lock.json

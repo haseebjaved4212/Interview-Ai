@@ -1,5 +1,9 @@
 
 <div align="center">
+  <img src="docs/readme-assets/HireCraft-Banner-Image.png" alt="HireCraft-Banner-Image" width="100%" />
+</div>
+
+<div align="center">
 
 # HireCraft 
 
